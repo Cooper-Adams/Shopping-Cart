@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Asap;
+}
+
+.cart-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  background-color: #242424;
+  position: sticky;
+  top: 0;
+}
+
+.left-nav {
+  display: inherit;
+  gap: 4rem;
+}
+
+.nav-link {
+  color: aliceblue;
+  font-weight: bold;
+  font-size: larger;
+  text-decoration: none;
+}
