@@ -17,15 +17,34 @@ body {
 .cart-nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 4rem;
   background-color: #242424;
   position: sticky;
   top: 0;
 }
 
-.left-nav {
+.nav-search {
+  background: #3b3b3b;
+  border: none;
+  border-radius: 3px;
+  color: aliceblue;
+  padding: 10px;
+  width: 300px;
+  &:focus {
+    background: #242424;
+    box-shadow: 0 0px 3px 1px aliceblue;
+    outline: 0;
+  }
+}
+
+.nav-search-icon {
+  color: aliceblue;
+}
+
+.right-nav {
   display: inherit;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .nav-link {
@@ -33,4 +52,9 @@ body {
   font-weight: bold;
   font-size: larger;
   text-decoration: none;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+  transition: all .25s ease;
 }
