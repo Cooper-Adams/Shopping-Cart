@@ -1,0 +1,38 @@
+.shop-cont {
+    display: flex;
+    width: 100%;
+}
+
+.pagination-div {
+    display: flex;
+    justify-content: space-between;
+    margin-left: calc(475px - 3rem);
+    margin-right: auto;
+}
+
+.pagination-title {
+    color: aliceblue;
+    padding: 0 0 0 1.5rem;
+}
+
+.pagination-prev, .pagination-next {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 2.5rem;
+    margin-left: calc(475px - 3rem);
+    margin-right: auto;
+    padding: 1rem 1.5rem;
+}
+
+.product-grid a {
+    text-decoration: none;
+    width: 400px;
+}

@@ -1,0 +1,50 @@
+.item-card {
+    background: #242424;
+    border-radius: 1%;
+    color: aliceblue;
+    display: flex;
+    height: 470px;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all .25s ease;
+    width: 400px;
+}
+
+.item-card:hover, .item-card:focus-visible {
+    box-shadow: 0 0 5px 2px black;
+    outline: 0;
+}
+
+.item-card img {
+    align-self: center;
+    height: 250px !important;
+    width: auto;
+}
+
+.bottom-card {
+    display: flex;
+    flex-direction: column;
+    height: 220px !important;
+    justify-content: space-between;
+}
+
+.card-rd, .bc-top {
+    padding: .5rem 1rem;
+}
+
+.card-rd {
+    display: flex;
+    justify-content: space-between;
+}
+
+.good {
+    color: green;
+}
+
+.average {
+    color: yellow;
+}
+
+.bad {
+    color: red;
+}

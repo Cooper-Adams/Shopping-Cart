@@ -1,0 +1,9 @@
+.sc-sidebar {
+    background: #303030;
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    position: fixed;
+    width: 300px;
+    z-index: 1;
+}
