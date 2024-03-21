@@ -1,3 +1,4 @@
+import { CCProvider } from '../contexts/CartContext'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import About from '../pages/About'
 import Cart from '../pages/Cart'
@@ -22,7 +23,7 @@ const Router = () => {
       element: <Cart />,
     },
     {
-      path: 'game',
+      path: 'game/:name',
       element: <Game />,
     },
     {
@@ -31,7 +32,11 @@ const Router = () => {
     }
   ])
 
-  return <RouterProvider router={router} />
+  return (
+    <CCProvider>
+      <RouterProvider router={router} />
+    </CCProvider>
+  )
 }
 
 export default Router
