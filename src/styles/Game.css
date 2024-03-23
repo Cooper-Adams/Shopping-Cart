@@ -1,0 +1,31 @@
+.game-cont {
+    width: 100%;
+}
+
+.game-content {
+    background-color: #303030;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-height: 100vh;
+    width: 60%;
+}
+
+.gc-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gi-spacing {
+    display: flex;
+}
+
+.gi-tags {
+    display: flex;
+    flex-direction: column;
+}
+
+.tags {
+    display: flex;
+    gap: 1rem;
+}
