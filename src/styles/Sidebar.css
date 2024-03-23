@@ -1,9 +1,9 @@
 .sc-sidebar {
     background: #303030;
-    height: 100%;
-    left: 0;
+    height: calc(100vh - 3rem - 67px);
     overflow-x: hidden;
-    position: fixed;
-    width: 300px;
-    z-index: 1;
+    padding: 1.5rem;
+    position: sticky;
+    top: 67px;
+    width: 18%;
 }
