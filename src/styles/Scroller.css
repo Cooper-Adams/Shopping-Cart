@@ -28,11 +28,12 @@
 
 .scroller-btns {
     display: flex;
+    margin-top: .5rem;
 }
 
 .btn-prev, .btn-next {
-    border-bottom: 1rem solid transparent;
-    border-top: 1rem solid transparent;
+    border-bottom: .75rem solid transparent;
+    border-top: .75rem solid transparent;
     cursor: pointer;
     height: 0;
     width: 0;
@@ -55,7 +56,7 @@
 
 .bs-slider {
     background-color: aliceblue;
-    height: 90%;
+    height: 100%;
     margin: 0 1rem;
     position: absolute;
     transition: all .25s;
