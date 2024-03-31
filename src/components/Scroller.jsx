@@ -2,17 +2,13 @@ import React, { useEffect } from 'react'
 import '../styles/Scroller.css'
 
 const Scroller = (props) => {
-    let content = []
+    let carouselContent = []
     const maxSlide = props.screenshots.length - 1
+    let smallCC = []
     let slideCount = 0
-    
-    //Adds the trailers to the scroller content
-    if (props.movies.length != 0) {
-        content.push(props.movies[0])
-    }
-    
+
     //Adds the screenshots after the trailer(s) and creates the slides
-    content.push(props.screenshots.map((sc, indx) => {
+    carouselContent.push(props.screenshots.map((sc, indx) => {
         return (
             <div key={indx} className='slide'>
                 <img className='slide-img' src={sc.image} alt={props.name + ' screenshot'} />
@@ -20,14 +16,48 @@ const Scroller = (props) => {
         )
     }))
 
+    //Adds the screenshots after the trailer(s) and creates the slides
+    smallCC.push(props.screenshots.map((sc, indx) => {
+        return (
+            <div key={indx} className='small-slide'>
+                <img className='ss-img' src={sc.image} alt={props.name + ' screenshot'} />
+            </div>
+        )
+    }))
+    
+    //Adds the trailers to the scroller content
+    if (props.movies.length != 0) {
+        smallCC.push(props.movies.map((movie, indx) => {
+            return (
+                <div key={indx} className='small-slide'>
+                    <video className='ss-img' controls src={movie.data['480']}></video>
+                </div>
+            )
+        }))
+    }
+
     useEffect(() => {
-        let slider = document.querySelector('.bs-slider')
-        let slides = document.querySelectorAll('.slide')
+        let btnSlider = document.querySelector('.bs-slider')
+        let cSlides = document.querySelectorAll('.slide')
+        let scSlides = document.querySelectorAll('.small-slide')
+        let smCarousel = document.querySelector('.sm-carousel')
 
-        slider.style.width = 'calc((100%) / ' + (maxSlide + 1) + ')'
+        btnSlider.style.width = 'calc((100%) / ' + (maxSlide + 1) + ')'
 
-        slides.forEach((slide, indx) => {
+        cSlides.forEach((slide, indx) => {
             slide.style = `transform: translateX(${indx * 100}%)`
+        })
+
+        let smcCalc = smCarousel.getBoundingClientRect()
+
+        scSlides.forEach((slide, indx) => {
+            let slideCalc = slide.getBoundingClientRect()
+
+            let spacing = ((smcCalc.width - (slideCalc.width * 4)) / 3)
+            
+            slide.style = 'transform: translateX(calc(' + (indx) + ' * (100% + ' + spacing + 'px)))'
+
+            if (indx == 0) { slide.classList.add('active') }
         })
     }, [])
 
@@ -54,7 +84,10 @@ const Scroller = (props) => {
         <>
             <div className='scroller-cont'>
                 <div className='carousel'>
-                    {content}
+                    {carouselContent}
+                </div>
+                <div className='sm-carousel'>
+                    {smallCC}
                 </div>
                 <div className='scroller-btns'>
                     <div name='prev' className='btn-prev' onClick={changeSlide}></div>
