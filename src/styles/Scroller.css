@@ -26,6 +26,23 @@
     width: 100%;
 }
 
+.sm-carousel {
+    height: calc(415px / 4);
+    overflow: hidden;
+    margin: 1rem 0 .5rem;
+    position: relative;
+    width: 100%;
+}
+
+.small-slide {
+    position: absolute;
+    width: calc(25% - 1rem);
+}
+
+.ss-img {
+    width: 100%;
+}
+
 .scroller-btns {
     display: flex;
     margin-top: .5rem;
