@@ -92,7 +92,7 @@ const Scroller = (props) => {
         smallCC.push(props.movies.map((movie, indx) => {
             return (
                 <div key={indx} className='small-slide vss'>
-                   <img className='ss-img vss' src={movie.preview} alt={movie.name} onClick={changeSlide} id={movie.data['480']} />
+                   <img className='ss-img vss' src={movie.preview} alt={movie.name} id={movie.data['480']} />
                 </div>
             )
         }))
