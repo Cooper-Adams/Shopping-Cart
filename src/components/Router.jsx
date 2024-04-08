@@ -7,6 +7,7 @@ import ErrorPage from '../pages/ErrorPage'
 import Game from '../pages/Game'
 import Home from '../pages/Home'
 import Library from '../pages/Library'
+import { QCProvider } from '../contexts/QueryContext'
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -39,7 +40,9 @@ const Router = () => {
 
   return (
     <CCProvider>
-      <RouterProvider router={router} />
+      <QCProvider>
+        <RouterProvider router={router} />
+      </QCProvider>
     </CCProvider>
   )
 }
