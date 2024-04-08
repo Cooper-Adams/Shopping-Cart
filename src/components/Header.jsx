@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import '../styles/Header.css'
 
 const Header = () => {
-    const cartGames = useContext(CartContext)
+    const { cart } = useContext(CartContext)
 
     return (
         <nav className='cart-nav'>
@@ -20,9 +20,9 @@ const Header = () => {
                 <Link className='nav-link' to='/library'>LIBRARY</Link>
                 <Link className='nav-link' to='/cart'>
                     CART
-                    {cartGames.length > 0 && (
+                    {cart.length > 0 && (
                         <div className='cart-count'>
-                            {cartGames.length}
+                            {cart.length}
                         </div>
                     )}
                 </Link>
