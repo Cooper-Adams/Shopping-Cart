@@ -1,0 +1,36 @@
+.ach-top {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.return-link {
+    color: aliceblue;
+    padding: 0;
+    text-decoration: none;
+}
+
+.full-achievements {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.full-ach-long {
+    align-items: start;
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    width: 40%;
+}
+
+.full-ach-long:first-child {
+    margin: 0 0 1rem 0;
+}
+
+.achievement-title, .achievement-desc {
+    margin: 0;
+    padding: 0;
+}
