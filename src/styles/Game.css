@@ -11,14 +11,23 @@
     width: 60%;
 }
 
-.gc-inner, .gc-lower {
+.gc-inner {
     display: flex;
     gap: 2rem;
+}
+
+.gc-left {
+    width: 65%;
+}
+
+.gc-right {
+    width: 35%;
 }
 
 .gi-spacing {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .gi-spacing h4, .gi-tags h4 {
@@ -29,6 +38,10 @@
 .gis-left {
     margin: 0;
     width: 40%;
+}
+
+.dev {
+    margin-top: 1rem;
 }
 
 .gi-tags {
@@ -100,13 +113,18 @@
 .sysreq-text {
     display: flex;
     font-size: medium;
+    gap: 1rem;
     white-space: pre-line;
 }
 
-.lower-right {
+.sysreq {
+    width: 50%;
+}
+
+.gc-right-tags {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
 }
 
 .lr-tags {
@@ -135,4 +153,26 @@
     font-size: small;
     padding: .25rem;
     width: fit-content;
+}
+
+.side-achievements {
+    align-items: center;
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+}
+
+.side-achievement, .ach-popup {
+    height: 56px;
+    width: 56px;
+}
+
+.ach-popup {
+    align-items: center;
+    color: aliceblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
