@@ -1,0 +1,16 @@
+.cic-game {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.cic-img {
+    width: 200px;
+}
+
+.cic-end {
+    display: flex;
+    flex-direction: column;
+}
