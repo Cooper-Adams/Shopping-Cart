@@ -85,6 +85,7 @@
     border: none;
     border-radius: 2px;
     color: aliceblue;
+    cursor: pointer;
     font-size: medium;
     padding: 5px;
 }
