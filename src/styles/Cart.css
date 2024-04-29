@@ -1,16 +1,94 @@
-.cic-game {
+.cart-cont {
+    display: flex;
+    justify-content: center;
+}
+
+.ic-cont {
     align-items: center;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: .5rem;
     justify-content: center;
+    width: 50%;
+}
+
+.cart-title {
+    align-self: flex-start;
+    margin-left: -2rem;
+}
+
+.cic-game {
+    align-items: flex-start;
+    background-color: darkblue;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
     width: 100%;
+}
+
+.cic-begin {
+    display: flex;
+    gap: 1rem;
 }
 
 .cic-img {
     width: 200px;
 }
 
+.cic-name {
+    margin: 0;
+    padding: 0;
+}
+
 .cic-end {
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+.cic-name, .cic-end {
+    padding-top: .75rem;
+}
+
+.purchase-div {
+    background-color: darkblue;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.pd-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pd-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.pd-rm {
+    background: none;
+    border: none;
+    color: aliceblue;
+    cursor: pointer;
+    font-size: medium;
+    padding: 0;
+    width: fit-content;
+}
+
+.pd-btn {
+    background-color: green;
+    border: none;
+    border-radius: 2px;
+    color: aliceblue;
+    cursor: pointer;
+    font-size: medium;
+    padding: 5px;
 }
