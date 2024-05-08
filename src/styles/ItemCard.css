@@ -1,7 +1,7 @@
 .item-card {
-    background: #242424;
+    background-image: linear-gradient(to right, var(--dark-bg) 50%, var(--darkest-bg));
     border-radius: 1%;
-    color: aliceblue;
+    color: var(--text-color);
     display: flex;
     height: 470px;
     flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 .item-card a {
-    color: aliceblue;
+    color: var(--text-color);
     text-decoration: none;
 }
 
