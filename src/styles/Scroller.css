@@ -35,7 +35,7 @@
 .sm-carousel {
     height: calc(415px / 4);
     overflow: hidden;
-    margin: 1rem 0 .5rem;
+    margin: 0 0 .5rem;
     position: relative;
     width: 100%;
 }
@@ -58,7 +58,7 @@
 
 .scroller-btns {
     display: flex;
-    margin-top: .5rem;
+    margin-top: 0 0 .5rem;
 }
 
 .btn-prev, .btn-next {
@@ -66,27 +66,31 @@
     border-top: .75rem solid transparent;
     cursor: pointer;
     height: 0;
+    margin: 0 .4rem;
     width: 0;
 }
 
 .btn-prev {
-    border-right: 1.5rem solid aliceblue;
+    border-right: 1.5rem solid var(--lightest-bg);
 }
 
 .btn-next {
-    border-left: 1.5rem solid aliceblue;
+    border-left: 1.5rem solid var(--lightest-bg);
 }
 
 .slide-rail {
     align-items: center;
+    background-color: var(--dark-bg);
     display: flex;
+    padding: 10px 0;
     position: relative;
     width: 100%;
 }
 
 .bs-slider {
-    background-color: aliceblue;
-    height: 100%;
+    background-color: var(--lightest-bg);
+    border-radius: 5px;
+    height: 110%;
     position: absolute;
     transition: all .25s;
 }
