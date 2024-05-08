@@ -3,7 +3,6 @@
 }
 
 .game-content {
-    background-color: #303030;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -31,7 +30,7 @@
 }
 
 .gi-spacing h4, .gi-tags h4 {
-    color: aliceblue;
+    color: var(--text-color);
     margin: 1rem 0 0;
 }
 
@@ -56,15 +55,16 @@
 
 .atc {
     align-items: center;
-    background-color: darkblue;
-    color: aliceblue;
+    background-image: linear-gradient(to right, rgba(239, 239, 240, .20) 40%, rgba(239, 239, 240, .6) 90%);
+    border-radius: 5px;
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     margin: 1.5rem 0;
 }
 
 .atc-bm {
-    margin: 1rem;
+    margin: 1.5rem 1rem;
     padding: 0;
 }
 
@@ -84,10 +84,14 @@
     background-color: green;
     border: none;
     border-radius: 2px;
-    color: aliceblue;
+    color: var(--text-color);
     cursor: pointer;
     font-size: medium;
     padding: 5px;
+}
+
+.atc-btn:hover {
+    color: white;
 }
 
 .lower-left {
@@ -99,14 +103,14 @@
 }
 
 .abt-header {
-    border-bottom: 1px solid aliceblue;
-    color: aliceblue;
+    border-bottom: 1px solid var(--text-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0 0 1rem 0;
 }
 
 .abt-text, .sysreq-text {
-    color: aliceblue;
+    color: var(--text-color);
     font-size: large;
     line-height: 1.5;
 }
@@ -135,30 +139,31 @@
 }
 
 .tag-header {
-    background-color: #242424;
-    color: aliceblue;
+    background-image: linear-gradient(to right, rgba(23, 26, 33, .9), rgba(23, 26, 33, 1) 70%);
+    color: var(--text-color);
     margin: 1.5rem 0 0;
     padding: 1rem;
 }
 
 .tags {
-    background-color: black;
+    background-image: linear-gradient(to right, rgba(27, 40, 56, .5), rgba(23, 26, 33, .8) 70%);
     display: flex;
     flex-wrap: wrap;
     padding: .5rem .5rem;
 }
 
 .lr-tag {
-    background-color: lightblue;
-    color: #242424;
-    font-size: small;
+    background-color: rgba(102, 192, 244, .4);
+    border-radius: 2px;
+    color: var(--lightest-bg);
+    font-size: medium;
     padding: .25rem;
     width: fit-content;
 }
 
 .side-achievements {
     align-items: center;
-    background-color: black;
+    background-image: linear-gradient(to right, rgba(27, 40, 56, .5), rgba(23, 26, 33, .8) 70%);
     display: flex;
     justify-content: space-evenly;
     padding: 1rem 0;
@@ -171,9 +176,13 @@
 
 .ach-popup {
     align-items: center;
-    color: aliceblue;
+    color: var(--text-color);
     cursor: pointer;
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.ach-message {
+    text-decoration: none;
 }
