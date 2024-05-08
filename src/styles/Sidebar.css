@@ -1,5 +1,7 @@
 .sc-sidebar {
-    background: #303030;
+    background: var(--light-bg);
+    box-shadow: 0 0 2px 1px black;
+    color: var(--text-color);
     height: calc(100vh - 3rem - 67px);
     overflow-x: hidden;
     padding: 1.5rem;
