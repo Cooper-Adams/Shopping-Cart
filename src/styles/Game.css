@@ -186,3 +186,47 @@
 .ach-message {
     text-decoration: none;
 }
+
+.gcra-cont {
+    align-items: center;
+    background-image: linear-gradient(to right, rgba(23, 26, 33, .9), rgba(23, 26, 33, 1) 70%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1.5rem 0 0;
+    padding: 1rem;
+}
+
+.gcra-cont a {
+    display: contents;
+    width: fit-content;
+}
+
+.mc-square {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 56px !important;
+    width: 56px !important;
+}
+
+.mc-score {
+    margin: 0;
+    padding: 0;
+}
+
+.mc-logo {
+    width: 70%;
+}
+
+.high {
+    background-color: #00ce7a;
+}
+
+.medium {
+    background-color: #ffbd3f;
+}
+
+.low {
+    background-color: #ff6874;
+}
