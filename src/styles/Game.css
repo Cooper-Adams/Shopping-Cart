@@ -36,7 +36,11 @@
 
 .gis-left {
     margin: 0;
-    width: 40%;
+    width: 35%;
+}
+
+.gi-dp {
+    margin-right: .75rem !important;
 }
 
 .dev {
@@ -229,4 +233,39 @@
 
 .low {
     background-color: #ff6874;
+}
+
+.gc-right-si {
+    margin: 1.5rem 0;
+}
+
+.side-information {
+    background-image: linear-gradient(to right, rgba(27, 40, 56, .5), rgba(23, 26, 33, .8) 70%);
+    flex-wrap: wrap;
+    padding: .5rem .5rem;
+}
+
+.si-spacing {
+    align-items: center;
+    color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: .75rem;
+}
+
+.si-spacing p {
+    font-size: small;
+    margin: 0;
+    padding: 0;
+}
+
+.si-spacing h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.si-spacing a {
+    color: var(--lightest-bg);
+    text-decoration: none;
 }
