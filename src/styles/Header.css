@@ -77,12 +77,21 @@ input[type='search']::-webkit-search-cancel-button {
   color: var(--text-color);
   font-weight: bold;
   font-size: larger;
+  position: relative;
   text-decoration: none;
 }
 
 .nav-link:hover {
   transform: scale(1.1);
   transition: all .25s ease;
+}
+
+.cart-count {
+  color: var(--lightest-bg);
+  position: absolute;
+  right: -.8rem;
+  top: -.5rem;
+  transition: all .25s ease-in-out;
 }
 
 .lds-dual-ring, .lds-dual-ring:after {
