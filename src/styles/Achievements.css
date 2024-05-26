@@ -1,12 +1,13 @@
 .ach-top {
+    color: var(--text-color);
     display: flex;
     gap: 2rem;
     justify-content: space-between;
-    width: 40%;
+    width: 50%;
 }
 
 .return-link {
-    color: aliceblue;
+    color: var(--text-color);
     padding: 0;
     text-decoration: none;
 }
@@ -20,10 +21,13 @@
 
 .full-ach-long {
     align-items: start;
+    border: 1px solid var(--darkest-bg);
+    color: var(--text-color);
     display: flex;
     gap: 1rem;
     margin: 1rem 0;
-    width: 40%;
+    padding: 1rem .5rem;
+    width: 50%;
 }
 
 .full-ach-long:first-child {
