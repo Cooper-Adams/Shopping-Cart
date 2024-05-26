@@ -14,13 +14,14 @@
 
 .cart-title {
     align-self: flex-start;
+    color: var(--text-color);
     margin-left: -2rem;
 }
 
 .cic-game {
     align-items: flex-start;
-    background-color: darkblue;
-    color: aliceblue;
+    background-image: linear-gradient(var(--dark-bg) 50%, var(--darkest-bg));
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
@@ -53,8 +54,8 @@
 }
 
 .purchase-div {
-    background-color: darkblue;
-    color: aliceblue;
+    background-image: linear-gradient(var(--dark-bg) 50%, var(--darkest-bg));
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -76,7 +77,7 @@
 .pd-rm {
     background: none;
     border: none;
-    color: aliceblue;
+    color: var(--text-color);
     cursor: pointer;
     font-size: medium;
     padding: 0;
@@ -87,7 +88,7 @@
     background-color: green;
     border: none;
     border-radius: 2px;
-    color: aliceblue;
+    color: var(--text-color);
     cursor: pointer;
     font-size: medium;
     padding: 5px;
