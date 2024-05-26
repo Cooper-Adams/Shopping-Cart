@@ -13,7 +13,7 @@
 .pagination-btn {
     background: none;
     border: none;
-    color: aliceblue;
+    color: var(--text-color);
     cursor: pointer;
     font-family: Asap;
     font-weight: bold;
@@ -21,7 +21,7 @@
 }
 
 .pg-search-statement {
-    color: aliceblue;
+    color: var(--text-color);
     margin: 1.5rem 0;
     padding: 0 0 0 1.5rem;
 }
