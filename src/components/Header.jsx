@@ -1,10 +1,23 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import '../styles/Header.css'
 
-const Header = () => {
+const Header = (props) => {
+    const [searchTerm, setSearchTerm] = useState('')
     const { cart } = useContext(CartContext)
+
+    const handleChange = (e) => { setSearchTerm(e.target.value) }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        let newSlug = searchTerm.split(' ').join('-').toLowerCase()
+
+        //set new results through props here
+        fetch()
+
+        setSearchTerm('')
+    }
 
     return (
         <nav className='cart-nav'>
@@ -13,7 +26,9 @@ const Header = () => {
             </div>
 
             <div className='middle-nav'>
-                <input className='nav-search' type='search' placeholder='Search games...'/>
+                <form onSubmit={onSubmit}>
+                    <input className='nav-search' type='search' placeholder='Search games...' value={searchTerm} onChange={handleChange}/>
+                </form>
             </div>
 
             <div className='right-nav'>
