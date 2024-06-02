@@ -1,5 +1,6 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
+import getGames from '../functions/getGames'
 import React, { useContext, useState } from 'react'
 import '../styles/Header.css'
 
@@ -9,14 +10,17 @@ const Header = (props) => {
 
     const handleChange = (e) => { setSearchTerm(e.target.value) }
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
         e.preventDefault()
         let newSlug = searchTerm.split(' ').join('-').toLowerCase()
 
-        //set new results through props here
-        fetch()
-
-        setSearchTerm('')
+        try {
+            props.setGames(getGames(('https://rawg.io/api/games?key=hellorobots&search=' + newSlug).then(resp => resp.json())))
+        } catch (e) {
+            console.error(e)
+        } finally {
+            setSearchTerm('')
+        }
     }
 
     return (
