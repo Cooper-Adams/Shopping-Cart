@@ -5,15 +5,15 @@ import Achievements from '../pages/Achievements'
 import Cart from '../pages/Cart'
 import ErrorPage from '../pages/ErrorPage'
 import Game from '../pages/Game'
-import Home from '../pages/Home'
 import Library from '../pages/Library'
+import Shop from './Shop'
 import { QCProvider } from '../contexts/QueryContext'
 
 const Router = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      element: <Shop />,
       errorElement: <ErrorPage />,
     },
     {
