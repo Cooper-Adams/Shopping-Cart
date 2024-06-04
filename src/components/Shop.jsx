@@ -1,17 +1,16 @@
 import { QueryContext } from '../contexts/QueryContext'
 import getGames from '../functions/getGames'
+import Header from './Header'
 import ItemCard from './ItemCard'
 import React, { useContext, useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
+import ResultBar from './ResultBar'
 import '../styles/Shop.css'
-import Header from './Header'
 
 const Shop = () => {
     const { page, setPage, pageSize, setPageSize } = useContext(QueryContext)
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(true)
-    const [searchStatement, setSearchStatement] = useState('Showing games released this month')
-    const [query, setQuery] = useState('https://rawg.io/api/games?key=hellorobots&page=' + page + '&' + pageSize)
+    const [query, setQuery] = useState('https://rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize)
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -39,8 +38,6 @@ const Shop = () => {
         }
     }
 
-    console.log(games)
-
     return (
         <>
             <Header setGames={setGames} />
@@ -49,13 +46,8 @@ const Shop = () => {
                 {loading && ( <div className='lds-dual-ring'></div> )}
 
                 {!loading && (<>
-                    <Sidebar
-                        setSearchStatement={setSearchStatement}
-                        setQuery={setQuery}
-                    />
-
                     <div className='product-cont'>
-                        <h3 className='pg-search-statement'>{searchStatement}</h3>
+                        <ResultBar />
 
                         <div className='product-grid'>
                             {games.results.map((game) => {
