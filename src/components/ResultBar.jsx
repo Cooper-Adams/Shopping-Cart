@@ -31,6 +31,11 @@ const ResultBar = () => {
             } else {
                 setSearchStatement('Showing games tagged "' + tag + '" in the ' + e.target.selectedOptions[0].text + ' genre')
             }
+        } else if (e.target.id == 'sort') {
+            console.log(e.target.selectedOptions[0].value)
+            setSort(e.target.selectedOptions[0].value)
+        } else if (e.target.id == 'order') {
+            setOrder(e.target.selectedOptions[0].value)
         }
     }
 
@@ -84,7 +89,7 @@ const ResultBar = () => {
                 </div>
 
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='ordering' id='sort'>
+                    <select className='srb-ordering' name='ordering' id='sort' onChange={updateQuery}>
                         <option className='srb-option' value='added'>Relevance</option>
                         <option className='srb-option' value='released'>Release Date</option>
                         <option className='srb-option' value='name'>Name</option>
@@ -94,9 +99,9 @@ const ResultBar = () => {
                 </div>
 
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='flip' id='order'>
-                        <option className='srb-option' value=''>Descending</option>
-                        <option className='srb-option' value='-'>Ascending</option>
+                    <select className='srb-ordering' name='flip' id='order' onChange={updateQuery}>
+                        <option className='srb-option' value='ordering=-'>Descending</option>
+                        <option className='srb-option' value='ordering='>Ascending</option>
                     </select>
                 </div>
             </form>
