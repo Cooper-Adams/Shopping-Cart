@@ -3,26 +3,26 @@ import React, { createContext, useState } from 'react'
 export const QueryContext = createContext([])
 
 export const QCProvider = (props) => {
-    const [one, setone] = useState([])
-    const [two, settwo] = useState([])
-    const [three, setthree] = useState([])
+    const [order, setOrder] = useState([])
     const [page, setPage] = useState(1)
     const [pageSize, setPageSize] = useState('page_size=15')
-    const [six, setsix] = useState([])
+    const [queryGenre, setQueryGenre] = useState('')
+    const [queryTag, setQueryTag] = useState('')
+    const [sort, setSort] = useState([])
 
     const ccValue = {
-        one,
-        setone,
-        two,
-        settwo,
-        three,
-        setthree,
+        order,
+        setOrder,
         page,
         setPage,
         pageSize,
         setPageSize,
-        six,
-        setsix
+        sort,
+        setSort,
+        queryGenre,
+        setQueryGenre,
+        queryTag,
+        setQueryTag,
     }
 
     return (
