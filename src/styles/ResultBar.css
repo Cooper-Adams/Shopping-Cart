@@ -38,6 +38,7 @@ select {
     font-family: Asap;
     font-size: 1rem;
     padding: 10px;
+    text-overflow: ellipsis;
     width: 160px;
 }
 
