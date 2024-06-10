@@ -20,12 +20,6 @@
     padding: 0;
 }
 
-.pg-search-statement {
-    color: var(--text-color);
-    margin: 1.5rem 0;
-    padding: 0 0 0 1.5rem;
-}
-
 .product-cont {
     margin-left: auto;
     margin-right: auto;
