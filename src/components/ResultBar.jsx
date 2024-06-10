@@ -90,7 +90,7 @@ const ResultBar = () => {
 
                 <div className='select-wrapper'>
                     <select className='srb-ordering' name='ordering' id='sort' onChange={updateQuery}>
-                        <option className='srb-option' value='added'>Relevance</option>
+                        <option className='srb-option' value='added'>Popularity</option>
                         <option className='srb-option' value='released'>Release Date</option>
                         <option className='srb-option' value='name'>Name</option>
                         <option className='srb-option' value='rating'>User Rating</option>
