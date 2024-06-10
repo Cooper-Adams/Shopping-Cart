@@ -3,10 +3,10 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext, useState } from 'react'
 
 const ResultBar = () => {
-    const { setOrder, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
-    const [tag, setTag] = useState('Default')
+    const { sort, order, queryTag, queryGenre, setOrder, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
     const [genre, setGenre] = useState('Default')
     const [searchStatement, setSearchStatement] = useState('Showing most popular games')
+    const [tag, setTag] = useState('Default')
 
     const clearQuery = (e) => {
         setGenre('Default')
@@ -17,6 +17,7 @@ const ResultBar = () => {
     const updateQuery = (e) => {
         if (e.target.id == 'tag') {
             setTag(e.target.selectedOptions[0].text)
+            setQueryTag(e.target.selectedOptions[0].value)
 
             if (genre == 'Default') {
                 setSearchStatement('Showing games tagged "' + e.target.selectedOptions[0].text + '"')
@@ -25,6 +26,7 @@ const ResultBar = () => {
             }
         } else if (e.target.id == 'genre') {
             setGenre(e.target.selectedOptions[0].text)
+            setQueryGenre(e.target.selectedOptions[0].value)
 
             if (tag == 'Default') {
                 setSearchStatement('Showing games in the ' + e.target.selectedOptions[0].text + ' genre')
@@ -32,7 +34,6 @@ const ResultBar = () => {
                 setSearchStatement('Showing games tagged "' + tag + '" in the ' + e.target.selectedOptions[0].text + ' genre')
             }
         } else if (e.target.id == 'sort') {
-            console.log(e.target.selectedOptions[0].value)
             setSort(e.target.selectedOptions[0].value)
         } else if (e.target.id == 'order') {
             setOrder(e.target.selectedOptions[0].value)
@@ -45,7 +46,7 @@ const ResultBar = () => {
 
             <form className='srb-form' action=''>
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='tags' id='tag' onChange={updateQuery} defaultValue={''}>
+                    <select className='srb-ordering' name='tags' id='tag' onChange={updateQuery} value={queryTag}>
                         <option style={{display: 'none'}} value='' disabled>Tags</option>
                         <option className='srb-option' value='45'>2D</option>
                         <option className='srb-option' value='69'>Action-Adventure</option>
@@ -65,7 +66,7 @@ const ResultBar = () => {
                 </div>
 
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='genre' id='genre' onChange={updateQuery} defaultValue={''}>
+                    <select className='srb-ordering' name='genre' id='genre' onChange={updateQuery} value={queryGenre}>
                         <option style={{display: 'none'}} value='' disabled>Genre</option>
                         <option className='srb-option' value='4'>Action</option>
                         <option className='srb-option' value='3'>Adventure</option>
@@ -89,7 +90,7 @@ const ResultBar = () => {
                 </div>
 
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='ordering' id='sort' onChange={updateQuery}>
+                    <select className='srb-ordering' name='ordering' id='sort' onChange={updateQuery} value={sort}>
                         <option className='srb-option' value='added'>Popularity</option>
                         <option className='srb-option' value='released'>Release Date</option>
                         <option className='srb-option' value='name'>Name</option>
@@ -99,7 +100,7 @@ const ResultBar = () => {
                 </div>
 
                 <div className='select-wrapper'>
-                    <select className='srb-ordering' name='flip' id='order' onChange={updateQuery}>
+                    <select className='srb-ordering' name='flip' id='order' onChange={updateQuery} value={order}>
                         <option className='srb-option' value='ordering=-'>Descending</option>
                         <option className='srb-option' value='ordering='>Ascending</option>
                     </select>
