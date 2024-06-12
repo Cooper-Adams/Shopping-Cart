@@ -7,14 +7,18 @@ import ResultBar from './ResultBar'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { page, setPage, pageSize, setPageSize } = useContext(QueryContext)
+    const { order, page, setPage, pageSize, sort, query, setQuery, queryGenre, queryTag } = useContext(QueryContext)
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(true)
-    const [query, setQuery] = useState('https://rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize)
+
+    useEffect(() => {
+        setQuery('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&' + order + sort + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : ''))
+    }, [page, sort, order, queryGenre, queryTag])
 
     useEffect(() => {
         const fetchGames = async () => {
             try {
+                setLoading(true)
                 setGames(await getGames(query))
             } catch (e) {
                 console.error(e)
@@ -31,10 +35,8 @@ const Shop = () => {
 
         if (button.target.classList.contains('prev')) {
             setPage(page - 1)
-            setQuery(games.previous)
         } else {
             setPage(page + 1)
-            setQuery(games.next)
         }
     }
 
@@ -43,12 +45,12 @@ const Shop = () => {
             <Header setGames={setGames} />
 
             <div className='shop-cont'>
-                {loading && ( <div className='lds-dual-ring'></div> )}
+                <div className='product-cont'>
+                    <ResultBar />
+                    
+                    {loading && ( <div className='lds-dual-ring'></div> )}
 
-                {!loading && (<>
-                    <div className='product-cont'>
-                        <ResultBar />
-
+                    {!loading && (<>
                         <div className='product-grid'>
                             {games.results.map((game) => {
                                 return (
@@ -64,8 +66,8 @@ const Shop = () => {
                             <button className='pagination-btn prev' onClick={changePage}>Prev</button>
                             <button className='pagination-btn' onClick={changePage}>Next</button>
                         </div>
-                    </div>
-                </>)}
+                    </>)}
+                </div>
             </div>
         </>
     )
