@@ -3,36 +3,24 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext, useState } from 'react'
 
 const ResultBar = () => {
-    const { sort, order, queryTag, queryGenre, setOrder, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
-    const [genre, setGenre] = useState('Default')
-    const [searchStatement, setSearchStatement] = useState('Showing most popular games')
-    const [tag, setTag] = useState('Default')
+    const { additions, order, sort, queryTag, queryGenre, setAdditions, setOrder, setPage, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
 
     const clearQuery = (e) => {
-        setGenre('Default')
-        setSearchStatement('Showing most popular games')
-        setTag('Default')
+        setAdditions(false)
+        setOrder('ordering=-')
+        setPage(1)
+        setQueryGenre('')
+        setQueryTag('')
+        setSort('added')
     }
 
     const updateQuery = (e) => {
-        if (e.target.id == 'tag') {
-            setTag(e.target.selectedOptions[0].text)
+        if (e.target.id == 'exclude') {
+            setAdditions(e.target.checked)
+        } else if (e.target.id == 'tag') {
             setQueryTag(e.target.selectedOptions[0].value)
-
-            if (genre == 'Default') {
-                setSearchStatement('Showing games tagged "' + e.target.selectedOptions[0].text + '"')
-            } else {
-                setSearchStatement('Showing games tagged "' + e.target.selectedOptions[0].text + '" in the ' + genre + ' genre')
-            }
         } else if (e.target.id == 'genre') {
-            setGenre(e.target.selectedOptions[0].text)
             setQueryGenre(e.target.selectedOptions[0].value)
-
-            if (tag == 'Default') {
-                setSearchStatement('Showing games in the ' + e.target.selectedOptions[0].text + ' genre')
-            } else {
-                setSearchStatement('Showing games tagged "' + tag + '" in the ' + e.target.selectedOptions[0].text + ' genre')
-            }
         } else if (e.target.id == 'sort') {
             setSort(e.target.selectedOptions[0].value)
         } else if (e.target.id == 'order') {
@@ -42,9 +30,12 @@ const ResultBar = () => {
 
     return (
         <div className='shop-resultsbar'>
-            <h4 className='srb-statement'>{searchStatement}</h4>    
-
             <form className='srb-form' action=''>
+                <div className='check-wrapper'>
+                    <label htmlFor='exclude'>Exclude Add-ons</label>
+                    <input type='checkbox' id='exclude' name='exclude' onChange={updateQuery} value={additions}/>
+                </div>
+
                 <div className='select-wrapper'>
                     <select className='srb-ordering' name='tags' id='tag' onChange={updateQuery} value={queryTag}>
                         <option style={{display: 'none'}} value='' disabled>Tags</option>
@@ -105,6 +96,8 @@ const ResultBar = () => {
                         <option className='srb-option' value='ordering='>Ascending</option>
                     </select>
                 </div>
+
+                <button className='search-btn' type='button' onClick={clearQuery}>Reset</button>
             </form>
         </div>
     )
