@@ -1,5 +1,5 @@
 .game-name {
-    color: aliceblue;
+    color: var(--text-color);
     margin: 0;
     padding: 1.5rem 0;
 }
@@ -39,25 +39,27 @@
 .sm-carousel {
     height: calc(415px / 4);
     overflow: hidden;
-    margin: 0 0 .5rem;
+    margin: .15rem 0;
     position: relative;
     width: 100%;
 }
 
 .small-slide {
+    display: flex;
+    height: 100%;
     position: absolute;
     transition: all .25s;
     width: calc(25% - 1rem);
 }
 
 .ss-img {
+    align-self: center;
     border: 2px solid transparent;
     width: 100%;
 }
 
 .active {
-    border: 2px solid white;
-    position: relative;
+    border: 2px solid var(--text-color);
 }
 
 .scroller-btns {
