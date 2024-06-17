@@ -21,29 +21,37 @@ const Header = (props) => {
     }
 
     return (
-        <nav className='cart-nav'>
-            <div className='left-nav'>
-                <Link className='nav-link' to='/'>Home</Link>
-            </div>
+        <>
+            <nav className='cart-nav'>
+                <div className='left-nav'>
+                    <Link className='nav-link' to='/'>Home</Link>
+                </div>
 
-            <div className='middle-nav'>
-                <form onSubmit={onSubmit}>
-                    <input className='nav-search' type='search' placeholder='Search games...' value={searchTerm} onChange={handleChange}/>
-                </form>
-            </div>
+                <div className='middle-nav'>
+                    <form onSubmit={onSubmit}>
+                        <input className='nav-search' type='search' placeholder='Search games...' value={searchTerm} onChange={handleChange}/>
+                    </form>
+                </div>
 
-            <div className='right-nav'>
-                <Link className='nav-link' to='/library'>LIBRARY</Link>
-                <Link className='nav-link' to='/cart'>
-                    CART
-                    {cart.length > 0 && (
-                        <div className='cart-count'>
-                            {cart.length}
-                        </div>
-                    )}
-                </Link>
-            </div>
-        </nav>
+                <div className='right-nav'>
+                    <Link className='nav-link' to='/library'>LIBRARY</Link>
+                    <Link className='nav-link' to='/cart'>
+                        CART
+                        {cart.length > 0 && (
+                            <div className='cart-count'>
+                                {cart.length}
+                            </div>
+                        )}
+                    </Link>
+                </div>
+            </nav>
+
+            <Link to='https://rawg.io' target='_blank' rel='noopener noreferrer'>
+                <div className='rawg'>
+                    <h5 className='rawg-title'>POWERED BY R A W G</h5>
+                </div>
+            </Link>
+        </>
     )
 }
 
