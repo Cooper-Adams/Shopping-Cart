@@ -7,13 +7,13 @@ import ResultBar from './ResultBar'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { order, page, setPage, pageSize, sort, query, setQuery, queryGenre, queryTag } = useContext(QueryContext)
+    const { additions, order, page, setPage, pageSize, sort, query, setQuery, queryGenre, queryTag } = useContext(QueryContext)
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        setQuery('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&' + order + sort + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : ''))
-    }, [page, sort, order, queryGenre, queryTag])
+        setQuery('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&' + order + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : ''))
+    }, [additions, order, page, queryGenre, queryTag, sort])
 
     useEffect(() => {
         const fetchGames = async () => {
