@@ -1,26 +1,19 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
-import getGames from '../functions/getGames'
+import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext, useState } from 'react'
 import '../styles/Header.css'
 
 const Header = (props) => {
-    const [searchTerm, setSearchTerm] = useState('')
     const { cart } = useContext(CartContext)
+    const { setSearch } = useContext(QueryContext)
+    const [searchTerm, setSearchTerm] = useState('')
 
     const handleChange = (e) => { setSearchTerm(e.target.value) }
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        let newSlug = searchTerm.split(' ').join('-').toLowerCase()
-
-        try {
-            props.setGames(getGames(('https://rawg.io/api/games?key=hellorobots&search=' + newSlug).then(resp => resp.json())))
-        } catch (e) {
-            console.error(e)
-        } finally {
-            setSearchTerm('')
-        }
+        setSearch(searchTerm.split(' ').join('-').toLowerCase())
     }
 
     return (
