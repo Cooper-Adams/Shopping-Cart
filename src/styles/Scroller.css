@@ -11,24 +11,28 @@
 }
 
 .carousel {
-    height: 415px;
+    background-color: var(--darkest-bg);
+    display: flex;
+    height: 400px;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
 
 .slide, .video-div {
+    align-self: center;
+    max-height: 400px;
     position: absolute;
     transition: all .25s;
 }
 
 .video-div {
-    height: 100%;
     width: 100%;
     z-index: 0;
 }
 
 .slide-img, .video-player {
+    max-height: 100%;
     width: 100%;
 }
 
