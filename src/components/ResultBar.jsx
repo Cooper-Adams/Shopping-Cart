@@ -1,9 +1,9 @@
 import '../styles/ResultBar.css'
 import { QueryContext } from '../contexts/QueryContext'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 const ResultBar = () => {
-    const { additions, order, sort, queryTag, queryGenre, setAdditions, setOrder, setPage, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
+    const { additions, order, sort, queryTag, queryGenre, setAdditions, setOrder, setPage, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
 
     const clearQuery = (e) => {
         setAdditions(false)
@@ -11,6 +11,7 @@ const ResultBar = () => {
         setPage(1)
         setQueryGenre('')
         setQueryTag('')
+        setSearch('')
         setSort('added')
     }
 
