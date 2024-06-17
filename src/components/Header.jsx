@@ -1,13 +1,17 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
 import { QueryContext } from '../contexts/QueryContext'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../styles/Header.css'
 
 const Header = (props) => {
     const { cart } = useContext(CartContext)
-    const { setSearch } = useContext(QueryContext)
+    const { search, setSearch } = useContext(QueryContext)
     const [searchTerm, setSearchTerm] = useState('')
+
+    useEffect(() => {
+        if (search == '') { setSearchTerm('') }
+    }, [search])
 
     const handleChange = (e) => { setSearchTerm(e.target.value) }
 
