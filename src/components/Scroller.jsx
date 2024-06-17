@@ -42,12 +42,10 @@ const Scroller = (props) => {
 
             let smcCalc = smCarousel.getBoundingClientRect()
 
-            //get actual dimensions of box
             let slideCalc = slide.getBoundingClientRect()
 
             let spacing = ((smcCalc.width - 4 - (slideCalc.width * 4)) / 3)
 
-            //place slides according to index
             if ((scSlides.length - 1 - slideCount) >= 3) {
                 slide.style = 'transform: translateX(calc(' + (indx - slideCount) + ' * (100% + ' + spacing + 'px)))'
             } else if ((scSlides.length - 1 - slideCount) == 2) {
@@ -69,7 +67,6 @@ const Scroller = (props) => {
         
     }
 
-    //Adds the screenshots after the trailer(s) and creates the slides
     carouselContent.push(props.screenshots.map((sc, indx) => {
         return (
             <div key={indx} className='slide'>
@@ -78,7 +75,6 @@ const Scroller = (props) => {
         )
     }))
 
-    //Adds the screenshots after the trailer(s) and creates the slides
     smallCC.push(props.screenshots.map((sc, indx) => {
         return (
             <div key={indx} className='small-slide'>
@@ -87,7 +83,6 @@ const Scroller = (props) => {
         )
     }))
     
-    //Adds the trailers to the scroller content
     if (props.movies.length != 0) {
         smallCC.push(props.movies.map((movie, indx) => {
             return (
@@ -116,12 +111,10 @@ const Scroller = (props) => {
         let smcCalc = smCarousel.getBoundingClientRect()
 
         scSlides.forEach((slide, indx) => {
-            //get actual dimensions of box
             let slideCalc = slide.getBoundingClientRect()
 
             let spacing = ((smcCalc.width - 4 - (slideCalc.width * 4)) / 3)
 
-            //place slides according to index
             slide.style = 'transform: translateX(calc(' + (indx) + ' * (100% + ' + spacing + 'px)))'
 
             if (indx == 0) { slide.firstChild.classList.add('active') }
@@ -132,7 +125,7 @@ const Scroller = (props) => {
         <>
             <div className='scroller-cont'>
                 <div className='carousel'>
-                    <div className='video-div'>
+                    <div className='video-div' style={{display: props.movies.length === 0 ? 'none' : 'flex'}}>
                         <video src='' className='video-player' controls></video>
                     </div>
                     {carouselContent}
