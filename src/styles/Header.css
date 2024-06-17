@@ -110,13 +110,31 @@ input[type='search']::-webkit-search-cancel-button {
 .lds-dual-ring:after {
   animation: lds-dual-ring 1.2s linear infinite;
   border: 6.4px solid currentColor;
-  border-color: currentColor transparent currentColor transparent;
+  border-color: var(--darkest-bg) transparent var(--darkest-bg) transparent;
   border-radius: 50%;
   content: ' ';
   display: block;
   height: 64px;
   margin: 8px;
   width: 64px;
+}
+
+.rawg {
+  align-items: center;
+  background-color: var(--dark-bg);
+  border-radius: 1%;
+  bottom: 0;
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  left: 0;
+  padding: 5px;
+  position: fixed;
+}
+
+.rawg-title {
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes lds-dual-ring {
