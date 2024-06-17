@@ -23,14 +23,16 @@ export const QCProvider = (props) => {
         setPage,
         pageSize,
         setPageSize,
-        sort,
-        setSort,
         query,
         setQuery,
         queryGenre,
         setQueryGenre,
         queryTag,
         setQueryTag,
+        search,
+        setSearch,
+        sort,
+        setSort
     }
 
     return (
