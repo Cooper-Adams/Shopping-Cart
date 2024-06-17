@@ -9,6 +9,7 @@ export const QCProvider = (props) => {
     const [pageSize, setPageSize] = useState('page_size=15')
     const [queryGenre, setQueryGenre] = useState('')
     const [queryTag, setQueryTag] = useState('')
+    const [search, setSearch] = useState('')
     const [sort, setSort] = useState('added')
     
     const [query, setQuery] = useState('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&' + order + sort + '&exclude_additions=' + additions)
