@@ -32,10 +32,10 @@ const ResultBar = () => {
     return (
         <div className='shop-resultsbar'>
             <form className='srb-form' action=''>
-                <div className='check-wrapper'>
-                    <label htmlFor='exclude'>Exclude Add-ons</label>
+                <label className='check-container' htmlFor='exclude'>Exclude Add-ons
                     <input type='checkbox' id='exclude' name='exclude' onChange={updateQuery} value={additions}/>
-                </div>
+                    <span className='checkmark'></span>
+                </label>
 
                 <div className='select-wrapper'>
                     <select className='srb-ordering' name='tags' id='tag' onChange={updateQuery} value={queryTag}>
