@@ -4,16 +4,17 @@
     border-radius: 1%;
     color: var(--text-color);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 1rem 1.5rem;
     min-width: 1248px;
-    padding: 0 1rem;
+    padding: .4rem 1rem;
 }
 
 .srb-form {
     align-items: center;
     display: flex;
-    gap: 1rem;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .select-wrapper::before {
@@ -32,7 +33,7 @@ select {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-color: var(--dark-bg);
+    background-color: var(--darkest-bg);
     border: 1px solid var(--dark-bg);
     border-radius: 2px;
     color: var(--lightest-bg);
@@ -54,6 +55,14 @@ select:hover {
     color: white;
 }
 
+.check-wrapper {
+    color: var(--lightest-bg);
+    display: flex;
+    font-size: 1rem;
+    gap: .5rem;
+    padding: 10px;
+}
+
 .select-wrapper {
     position: relative;
 }
@@ -69,4 +78,21 @@ select::-ms-expand {
 .srb-option {
     border-radius: 0;
     color: var(--text-color);
+}
+
+.search-btn {
+    background-color: var(--darkest-bg);
+    border: 1px solid var(--dark-bg);
+    border-radius: 2px;
+    color: var(--lightest-bg);
+    cursor: pointer;
+    font-family: Asap;
+    font-size: 1rem;
+    padding: 10px;
+    text-overflow: ellipsis;
+}
+
+.search-btn:hover {
+    background-image: linear-gradient(to right, var(--lightest-bg), var(--light-bg));
+    color: white;
 }
