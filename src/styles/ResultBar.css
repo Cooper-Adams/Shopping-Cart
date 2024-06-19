@@ -1,92 +1,64 @@
 .shop-resultsbar {
-    align-items: center;
     background-color: var(--darkest-bg);
-    border-radius: 1%;
     color: var(--text-color);
     display: flex;
-    justify-content: center;
-    margin: 1rem 1.5rem;
-    min-width: 1248px;
-    padding: .4rem 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: hidden;
+    padding: 1rem 1.5rem;
+    width: 20%;
 }
 
-.srb-form {
+.srb-top {
     align-items: center;
+    border-bottom: 1px solid var(--lightest-bg);
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-between;
 }
 
-.select-wrapper::before {
-    border: 7px solid transparent;
-    border-top-color: var(--text-color);
-    content:'';
-    height: 0;
-    margin-top: -3px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    width: 0;
+.srb-top-number {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
 }
 
-select {    
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--darkest-bg);
-    border: 1px solid var(--dark-bg);
-    border-radius: 2px;
+.clear-btn {
+    background-color: transparent;
+    border: none;
     color: var(--lightest-bg);
     cursor: pointer;
     font-family: Asap;
-    font-size: 1rem;
-    padding: 10px;
-    text-overflow: ellipsis;
-    width: 160px;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
 }
 
-select:focus {
-    border: 1px solid var(--lightest-bg);
-    outline: none !important;
-}
-
-select:hover {
-    background-image: linear-gradient(to right, var(--lightest-bg), var(--light-bg));
+.clear-btn:hover {
     color: white;
 }
 
-.select-wrapper {
-    position: relative;
+.srb-sortby {
+    display: flex;
+    flex-direction: column;
 }
 
-.select-wrapper::before {
-    pointer-events: none;
+.srb-title {
+    margin: 0 0 .5rem;
+    padding: 0;
 }
 
-select::-ms-expand {
-    display: none;
-}
-
-.srb-option {
-    border-radius: 0;
-    color: var(--text-color);
-}
-
-.search-btn {
-    background-color: var(--darkest-bg);
-    border: 1px solid var(--dark-bg);
-    border-radius: 2px;
+.sortby-input {
     color: var(--lightest-bg);
-    cursor: pointer;
-    font-family: Asap;
+    display: flex;
     font-size: 1rem;
-    padding: 10px;
-    text-overflow: ellipsis;
+    justify-content: space-between;
+    margin: .75rem 0 0;
 }
 
-.search-btn:hover {
-    background-image: linear-gradient(to right, var(--lightest-bg), var(--light-bg));
-    color: white;
+.shop-resultsbar form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .check-container {
@@ -95,9 +67,10 @@ select::-ms-expand {
     -ms-user-select: none;
     color: var(--lightest-bg);
     cursor: pointer;
-    display: flex;
     font-size: 1rem;
-    gap: .45rem;
+    padding-left: 1.5rem;
+    position: relative;
+    width: fit-content;
     user-select: none;
 }
   
@@ -111,14 +84,17 @@ select::-ms-expand {
   
 .checkmark {
     background-color: var(--darkest-color);
-    border: 1px solid var(--dark-bg);
+    border: 1px solid var(--lightest-bg);
     height: 1rem;
+    left: 0;
+    position: absolute;
+    top: 0;
     width: 1rem;
 }
   
 .check-container input:checked ~ .checkmark {
     background-color: var(--darkest-bg);
-    border: 1px solid var(--dark-bg);
+    border: 1px solid var(--lightest-bg);
 }
   
 .checkmark:after {
