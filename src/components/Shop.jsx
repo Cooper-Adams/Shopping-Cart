@@ -46,27 +46,31 @@ const Shop = () => {
 
             <div className='shop-cont'>
                 <div className='product-cont'>
-                    <ResultBar />
+                    <ResultBar
+                        number = {games.count}
+                    />
                     
-                    {loading && ( <div className='lds-dual-ring'></div> )}
+                    <div className='pg-container'>
+                        {loading && ( <div className='lds-dual-ring'></div> )}
+                        
+                        {!loading && (<>
+                            <div className='product-grid'>
+                                {games.results.map((game) => {
+                                    return (
+                                        <ItemCard
+                                            game = {game}
+                                            key = {game.id}
+                                        />
+                                    )
+                                })}
+                            </div>
 
-                    {!loading && (<>
-                        <div className='product-grid'>
-                            {games.results.map((game) => {
-                                return (
-                                    <ItemCard
-                                        game = {game}
-                                        key = {game.id}
-                                    />
-                                )
-                            })}
-                        </div>
-
-                        <div className='pagination-div'>
-                            <button className='pagination-btn prev' onClick={changePage}>Prev</button>
-                            <button className='pagination-btn' onClick={changePage}>Next</button>
-                        </div>
-                    </>)}
+                            <div className='pagination-div'>
+                                <button className='pagination-btn prev' onClick={changePage}>Prev</button>
+                                <button className='pagination-btn' onClick={changePage}>Next</button>
+                            </div>
+                        </>)}
+                    </div>
                 </div>
             </div>
         </>
