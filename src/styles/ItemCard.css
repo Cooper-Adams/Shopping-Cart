@@ -1,13 +1,11 @@
 .item-card {
     background-image: linear-gradient(to right, var(--dark-bg) 50%, var(--darkest-bg));
-    border-radius: 1%;
+    border-radius: 2%;
     color: var(--text-color);
     display: flex;
-    height: 470px;
     flex-direction: column;
     overflow: hidden;
     transition: all .25s ease;
-    width: 400px;
 }
 
 .item-card:hover, .item-card:focus-visible {
@@ -22,14 +20,13 @@
 
 .item-card img {
     align-self: center;
-    height: 250px !important;
-    width: auto;
+    height: 230px !important;
 }
 
 .bottom-card {
     display: flex;
     flex-direction: column;
-    height: 220px !important;
+    height: 150px !important;
     justify-content: space-between;
 }
 
