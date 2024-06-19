@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Scroller from '../components/Scroller'
 import '../styles/Game.css'
 
-const Game = () => {
+const Game = (props) => {
     const { cart, setCart } = useContext(CartContext)
     const [achievements, setAchievements] = useState([])
     const [game, setGame] = useState([])
@@ -49,6 +49,8 @@ const Game = () => {
         retrieveGameInfo()
     }, [])
 
+    console.log(game)
+
     if (!loading) {
         for (let i = 0; i < game.platforms.length; ++i) {
             if (game.platforms[i].platform.name === 'PC') {
@@ -63,12 +65,12 @@ const Game = () => {
     return (
         <>
             <Header />
-
-            {loading && ( <div className='lds-dual-ring'></div> )}
             
-            {!loading && (
-                <div className='game-cont'>
-                    <div className='game-content'>
+            <div className='game-cont'>
+                <div className='game-content'>
+                    {loading && ( <div className='lds-dual-ring'></div> )}
+
+                    {!loading && (<>
                         <h1 className='game-name'>{game.name}</h1>
 
                         <div className='gc-inner'>
@@ -93,7 +95,7 @@ const Game = () => {
                                         <p className='abt-text'>{game.description_raw}</p>
                                     </div>
 
-                                    <div className='abt-sysreq'>
+                                    <div className='abt-sysreq' style={{display: minimum == null ? 'none' : 'block'}}>
                                         <h4 className='abt-header'>SYSTEM REQUIREMENTS</h4>
                                         <div className='sysreq-text'>
                                             <p className='sysreq'>{minimum}</p>
@@ -222,9 +224,9 @@ const Game = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </>)}
                 </div>
-            )}
+            </div>
         </>
     )
 }
