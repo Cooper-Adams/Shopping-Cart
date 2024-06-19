@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.pg-container {
+    width: 120%;
+}
+
 .pagination-div {
     display: flex;
     justify-content: space-between;
@@ -23,6 +27,7 @@
 .product-cont {
     display: flex;
     overflow-y: hidden;
+    width: 100%;
 }
 
 .product-grid {
