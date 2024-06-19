@@ -99,23 +99,22 @@ input[type='search']::-webkit-search-cancel-button {
 }
 
 .lds-dual-ring {
-  display: inline-block;
+  align-self: center;
   height: 80px;
   inset: 0px;
-  position: fixed;
-  width: 80px;
   margin: auto;
+  width: 80px;
 }
 
 .lds-dual-ring:after {
+  align-self: center;
   animation: lds-dual-ring 1.2s linear infinite;
   border: 6.4px solid currentColor;
   border-color: var(--darkest-bg) transparent var(--darkest-bg) transparent;
   border-radius: 50%;
   content: ' ';
-  display: block;
+  display: flex;
   height: 64px;
-  margin: 8px;
   width: 64px;
 }
 
@@ -130,6 +129,7 @@ input[type='search']::-webkit-search-cancel-button {
   left: 0;
   padding: 5px;
   position: fixed;
+  z-index: 1;
 }
 
 .rawg-title {
