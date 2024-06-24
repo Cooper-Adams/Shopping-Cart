@@ -3,13 +3,21 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext } from 'react'
 
 const ResultBar = (props) => {
-    const { additions, sort, queryTag, queryGenre, setAdditions, setPage, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
+    const { additions, platforms, queryTag, queryGenre, setAdditions, setPage, setPlatforms, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
 
     const changeGenres = (e) => {
         if (e.target.checked) {
             setQueryGenre(...queryGenre, e.target.name)
         } else {
             setQueryGenre(Array(queryGenre).filter((d) => d !== e.target.name))
+        }
+    }
+
+    const changePlatforms = (e) => {
+        if (e.target.checked) {
+            setPlatforms(...platforms, e.target.name)
+        } else {
+            setPlatforms(Array(platforms).filter((d) => d !== e.target.name))
         }
     }
 
@@ -21,7 +29,7 @@ const ResultBar = (props) => {
         }
     }
 
-    const clearQuery = (e) => {
+    const clearQuery = () => {
         setAdditions(false)
         setPage(1)
         setQueryGenre('')
@@ -43,6 +51,40 @@ const ResultBar = (props) => {
                 <input type='checkbox' id='exclude' name='exclude' onChange={toggleAdditions} value={additions}/>
                 <span className='checkmark'></span>
             </label>
+
+            <form className='srb-platforms' action=''>
+                <h3 className='srb-title'>Platforms</h3>
+
+                <label className='check-container' htmlFor='pc'>PC
+                    <input type='checkbox' id='pc' name='4' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='playstation'>PlayStation
+                    <input type='checkbox' id='playstation' name='3' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='xbox'>Xbox
+                    <input type='checkbox' id='xbox' name='11' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='switch'>Nintendo Switch
+                    <input type='checkbox' id='switch' name='40' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='ios'>iOS
+                    <input type='checkbox' id='ios' name='19' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='android'>Android
+                    <input type='checkbox' id='android' name='6' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+            </form>
 
             <form className='srb-genres' action=''>
                 <h3 className='srb-title'>Genres</h3>
@@ -163,11 +205,6 @@ const ResultBar = (props) => {
 
                 <label className='check-container' htmlFor='openworld'>Open-World
                     <input type='checkbox' id='openworld' name='36' onChange={changeTags}/>
-                    <span className='checkmark'></span>
-                </label>
-
-                <label className='check-container' htmlFor='rpgt'>RPG
-                    <input type='checkbox' id='rpgt' name='24' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
