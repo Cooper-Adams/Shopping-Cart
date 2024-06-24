@@ -7,13 +7,9 @@ import ResultBar from './ResultBar'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { additions, order, page, setPage, pageSize, search, sort, query, setQuery, queryGenre, queryTag } = useContext(QueryContext)
+    const { page, setPage, query } = useContext(QueryContext)
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setQuery('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&' + order + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : '') + (search != '' ? ('&search=' + search) : ''))
-    }, [additions, order, page, queryGenre, queryTag, search, sort])
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -40,37 +36,37 @@ const Shop = () => {
         }
     }
 
+    console.log(query)
+
     return (
         <>
             <Header setGames={setGames} />
 
-            <div className='shop-cont'>
-                <div className='product-cont'>
-                    <ResultBar
-                        number = {games.count}
-                    />
+            <div className='product-cont'>
+                <ResultBar
+                    number = {games.count}
+                />
+                
+                <div className='pg-container'>
+                    {loading && ( <div className='lds-dual-ring'></div> )}
                     
-                    <div className='pg-container'>
-                        {loading && ( <div className='lds-dual-ring'></div> )}
-                        
-                        {!loading && (<>
-                            <div className='product-grid'>
-                                {games.results.map((game) => {
-                                    return (
-                                        <ItemCard
-                                            game = {game}
-                                            key = {game.id}
-                                        />
-                                    )
-                                })}
-                            </div>
+                    {!loading && (<>
+                        <div className='product-grid'>
+                            {games.results.map((game) => {
+                                return (
+                                    <ItemCard
+                                        game = {game}
+                                        key = {game.id}
+                                    />
+                                )
+                            })}
+                        </div>
 
-                            <div className='pagination-div'>
-                                <button className='pagination-btn prev' onClick={changePage}>Prev</button>
-                                <button className='pagination-btn' onClick={changePage}>Next</button>
-                            </div>
-                        </>)}
-                    </div>
+                        <div className='pagination-div'>
+                            <button className='pagination-btn prev' onClick={changePage}>Prev</button>
+                            <button className='pagination-btn' onClick={changePage}>Next</button>
+                        </div>
+                    </>)}
                 </div>
             </div>
         </>
