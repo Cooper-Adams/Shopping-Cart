@@ -60,28 +60,48 @@ const ResultBar = (props) => {
                     <span className='checkmark'></span>
                 </label>
 
-                <label className='check-container' htmlFor='playstation'>PlayStation
-                    <input type='checkbox' id='playstation' name='3' onChange={changePlatforms}/>
+                <label className='check-container' htmlFor='playstation5'>PlayStation 5
+                    <input type='checkbox' id='playstation5' name='187' onChange={changePlatforms}/>
                     <span className='checkmark'></span>
                 </label>
 
-                <label className='check-container' htmlFor='xbox'>Xbox
-                    <input type='checkbox' id='xbox' name='11' onChange={changePlatforms}/>
+                <label className='check-container' htmlFor='playstation4'>PlayStation 4
+                    <input type='checkbox' id='playstation4' name='18' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='playstation3'>PlayStation 3
+                    <input type='checkbox' id='playstation3' name='16' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='xboxx'>Xbox Series X
+                    <input type='checkbox' id='xboxx' name='186' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='xbox1'>Xbox One
+                    <input type='checkbox' id='xbox1' name='1' onChange={changePlatforms}/>
+                    <span className='checkmark'></span>
+                </label>
+
+                <label className='check-container' htmlFor='xbox360'>Xbox 360
+                    <input type='checkbox' id='xbox360' name='14' onChange={changePlatforms}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='switch'>Nintendo Switch
-                    <input type='checkbox' id='switch' name='40' onChange={changePlatforms}/>
+                    <input type='checkbox' id='switch' name='7' onChange={changePlatforms}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='ios'>iOS
-                    <input type='checkbox' id='ios' name='19' onChange={changePlatforms}/>
+                    <input type='checkbox' id='ios' name='3' onChange={changePlatforms}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='android'>Android
-                    <input type='checkbox' id='android' name='6' onChange={changePlatforms}/>
+                    <input type='checkbox' id='android' name='21' onChange={changePlatforms}/>
                     <span className='checkmark'></span>
                 </label>
             </form>
