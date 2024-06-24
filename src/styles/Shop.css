@@ -30,7 +30,9 @@
 }
 
 .pagination-div {
+    align-items: center;
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin: 1rem auto 1rem;
     padding: 0 1.5rem;
@@ -39,9 +41,17 @@
 .pagination-btn {
     background: none;
     border: none;
-    color: var(--text-color);
+    color: var(--lightest-bg);
     cursor: pointer;
+    font-size: larger;
+    padding: 0;
+}
+
+.pagination-btn:hover, .pagination-numeration {
+    color: var(--text-color);
+}
+
+.pagination-numeration, .pagination-btn {
     font-family: Asap;
     font-weight: bold;
-    padding: 0;
 }
