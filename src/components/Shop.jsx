@@ -30,13 +30,15 @@ const Shop = () => {
         window.scrollTo(0, 0)
 
         if (button.target.classList.contains('prev')) {
-            setPage(page - 1)
+            if (page != 1) {
+                setPage(page - 1)
+            }
         } else {
-            setPage(page + 1)
+            if (page != Math.ceil(games.count / 20)) {
+                setPage(page + 1)
+            }
         }
     }
-
-    console.log(query)
 
     return (
         <>
@@ -63,8 +65,9 @@ const Shop = () => {
                         </div>
 
                         <div className='pagination-div'>
-                            <button className='pagination-btn prev' onClick={changePage}>Prev</button>
-                            <button className='pagination-btn' onClick={changePage}>Next</button>
+                            <button className='pagination-btn prev' onClick={changePage}>{'<'}</button>
+                            <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / 20)}</span>
+                            <button className='pagination-btn' onClick={changePage}>{'>'}</button>
                         </div>
                     </>)}
                 </div>
