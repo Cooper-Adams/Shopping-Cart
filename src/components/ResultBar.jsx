@@ -3,11 +3,26 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext } from 'react'
 
 const ResultBar = (props) => {
-    const { additions, order, sort, queryTag, queryGenre, setAdditions, setOrder, setPage, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
+    const { additions, sort, queryTag, queryGenre, setAdditions, setPage, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
+
+    const changeGenres = (e) => {
+        if (e.target.checked) {
+            setQueryGenre(...queryGenre, e.target.name)
+        } else {
+            setQueryGenre(Array(queryGenre).filter((d) => d !== e.target.name))
+        }
+    }
+
+    const changeTags = (e) => {
+        if (e.target.checked) {
+            setQueryTag(...queryTag, e.target.name)
+        } else {
+            setQueryTag(Array(queryTag).filter((d) => d !== e.target.name))
+        }
+    }
 
     const clearQuery = (e) => {
         setAdditions(false)
-        setOrder('ordering=-')
         setPage(1)
         setQueryGenre('')
         setQueryTag('')
@@ -15,19 +30,7 @@ const ResultBar = (props) => {
         setSort('added')
     }
 
-    const updateQuery = (e) => {
-        if (e.target.id == 'exclude') {
-            setAdditions(e.target.checked)
-        } else if (e.target.id == 'tag') {
-            setQueryTag(e.target.selectedOptions[0].value)
-        } else if (e.target.id == 'genre') {
-            setQueryGenre(e.target.selectedOptions[0].value)
-        } else if (e.target.id == 'sort') {
-            setSort(e.target.selectedOptions[0].value)
-        } else if (e.target.id == 'order') {
-            setOrder(e.target.selectedOptions[0].value)
-        }
-    }
+    const toggleAdditions = (e) => { setAdditions(e.target.checked) }
 
     return (
         <div className='shop-resultsbar'>
@@ -37,7 +40,7 @@ const ResultBar = (props) => {
             </div>
 
             <label className='check-container exclude' htmlFor='exclude'>Exclude Add-Ons
-                <input type='checkbox' id='exclude' name='exclude' onChange={updateQuery} value={additions}/>
+                <input type='checkbox' id='exclude' name='exclude' onChange={toggleAdditions} value={additions}/>
                 <span className='checkmark'></span>
             </label>
 
@@ -45,77 +48,77 @@ const ResultBar = (props) => {
                 <h3 className='srb-title'>Genres</h3>
 
                 <label className='check-container' htmlFor='action'>Action
-                    <input type='checkbox' name='action' value={4}/>
+                    <input type='checkbox' id='action' name='4' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='adventure'>Adventure
-                    <input type='checkbox' name='adventure' value={3}/>
+                    <input type='checkbox' id='adventure' name='3' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='arcade'>Arcade
-                    <input type='checkbox' name='arcade' value={11}/>
+                    <input type='checkbox' id='arcade' name='11' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='casual'>Casual
-                    <input type='checkbox' name='casual' value={40}/>
+                    <input type='checkbox' id='casual' name='40' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='family'>Family
-                    <input type='checkbox' name='family' value={19}/>
+                    <input type='checkbox' id='family' name='19' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='fighting'>Fighting
-                    <input type='checkbox' name='fighting' value={6}/>
+                    <input type='checkbox' id='fighting' name='6' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='indie'>Indie
-                    <input type='checkbox' name='indie' value={51}/>
+                    <input type='checkbox' id='indie' name='51' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='platformer'>Platformer
-                    <input type='checkbox' name='platformer' value={83}/>
+                    <input type='checkbox' id='platformer' name='83' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='puzzle'>Puzzle
-                    <input type='checkbox' name='puzzle' value={7}/>
+                    <input type='checkbox' id='puzzle' name='7' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='racing'>Racing
-                    <input type='checkbox' name='racing' value={1}/>
+                    <input type='checkbox' id='racing' name='1' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='rpg'>RPG
-                    <input type='checkbox' name='rpg' value={5}/>
+                    <input type='checkbox' id='rpg' name='5' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='shooter'>Shooter
-                    <input type='checkbox' name='shooter' value={2}/>
+                    <input type='checkbox' id='shooter' name='2' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='simulation'>Simulation
-                    <input type='checkbox' name='simulation' value={14}/>
+                    <input type='checkbox' id='simulation' name='14' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='sports'>Sports
-                    <input type='checkbox' name='sports' value={15}/>
+                    <input type='checkbox' id='sports' name='15' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='strategy'>Strategy
-                    <input type='checkbox' name='strategy' value={10}/>
+                    <input type='checkbox' id='strategy' name='10' onChange={changeGenres}/>
                     <span className='checkmark'></span>
                 </label>
             </form>
@@ -124,72 +127,72 @@ const ResultBar = (props) => {
                 <h3 className='srb-title'>Tags</h3>
 
                 <label className='check-container' htmlFor='2d'>2D
-                    <input type='checkbox' name='2d' value={45}/>
+                    <input type='checkbox' id='2d' name='45' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='actionadventure'>Action-Adventure
-                    <input type='checkbox' name='actionadventure' value={69}/>
+                    <input type='checkbox' id='actionadventure' name='69' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='coop'>Co-Op
-                    <input type='checkbox' name='coop' value={18}/>
+                    <input type='checkbox' id='coop' name='18' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='firstperson'>First-Person
-                    <input type='checkbox' name='firstperson' value={8}/>
+                    <input type='checkbox' id='firstperson' name='8' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='fullcontrollersupport'>Full Controller Support
-                    <input type='checkbox' name='fullcontrollersupport' value={40836}/>
+                    <input type='checkbox' id='fullcontrollersupport' name='40836' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='horror'>Horror
-                    <input type='checkbox' name='horror' value={16}/>
+                    <input type='checkbox' id='horror' name='16' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='multiplayer'>Multiplayer
-                    <input type='checkbox' name='multiplayer' value={7}/>
+                    <input type='checkbox' id='multiplayer' name='7' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='openworld'>Open-World
-                    <input type='checkbox' name='openworld' value={36}/>
+                    <input type='checkbox' id='openworld' name='36' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
-                <label className='check-container' htmlFor='rpg'>RPG
-                    <input type='checkbox' name='rpg' value={24}/>
+                <label className='check-container' htmlFor='rpgt'>RPG
+                    <input type='checkbox' id='rpgt' name='24' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='scifi'>Sci-Fi
-                    <input type='checkbox' name='scifi' value={32}/>
+                    <input type='checkbox' id='scifi' name='32' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='singleplayer'>Singleplayer
-                    <input type='checkbox' name='singleplayer' value={31}/>
+                    <input type='checkbox' id='singleplayer' name='31' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='storyrich'>Story Rich
-                    <input type='checkbox' name='storyrich' value={118}/>
+                    <input type='checkbox' id='storyrich' name='118' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='survival'>Survival
-                    <input type='checkbox' name='survival' value={1}/>
+                    <input type='checkbox' id='survival' name='1' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
 
                 <label className='check-container' htmlFor='thirdperson'>Third-Person
-                    <input type='checkbox' name='thirdperson' value={149}/>
+                    <input type='checkbox' id='thirdperson' name='149' onChange={changeTags}/>
                     <span className='checkmark'></span>
                 </label>
             </form>
