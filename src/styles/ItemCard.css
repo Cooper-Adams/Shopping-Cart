@@ -18,25 +18,47 @@
     text-decoration: none;
 }
 
+.game-title {
+    margin: .75rem 0 0;
+    padding: 0;
+}
+
+.img-wrapper {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
 .item-card img {
-    align-self: center;
     height: 230px !important;
 }
 
 .bottom-card {
     display: flex;
     flex-direction: column;
-    height: 150px !important;
+    min-height: 150px;
     justify-content: space-between;
 }
 
+.icon-div {
+    align-items: center;
+    display: flex;
+    gap: .4rem;
+    margin: .5rem 0 0;
+}
+
 .card-rd, .bc-top {
-    padding: .5rem 1rem;
+    padding: 0 1rem;
 }
 
 .card-rd {
     display: flex;
     justify-content: space-between;
+}
+
+.game-rating {
+    margin: .5rem 0 0;
+    padding: 0;
 }
 
 .good {
