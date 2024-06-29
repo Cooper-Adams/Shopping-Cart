@@ -113,7 +113,7 @@
     padding: 0 0 1rem 0;
 }
 
-.abt-text, .sysreq-text {
+.abt-text, .sysreq-text, .sysreq {
     color: var(--text-color);
     font-size: large;
     line-height: 1.5;
@@ -121,12 +121,11 @@
 
 .sysreq-text {
     display: flex;
-    font-size: medium;
     gap: 1rem;
-    white-space: pre-line;
 }
 
 .sysreq {
+    white-space: pre-line;
     width: 50%;
 }
 
