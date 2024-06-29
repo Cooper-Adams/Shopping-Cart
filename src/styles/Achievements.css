@@ -1,9 +1,8 @@
 .ach-top {
     color: var(--text-color);
     display: flex;
-    gap: 2rem;
     justify-content: space-between;
-    width: 50%;
+    width: calc(50% + 1rem);
 }
 
 .return-link {
@@ -18,11 +17,6 @@
     justify-content: center;
     flex-direction: column;
     min-height: calc(100vh - 4rem);
-}
-
-.full-achievements .lds-dual-ring {
-    margin-bottom: auto;
-    margin-top: auto;
 }
 
 .full-ach-long {
