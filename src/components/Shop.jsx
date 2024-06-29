@@ -7,7 +7,7 @@ import ResultBar from './ResultBar'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { page, setPage, query } = useContext(QueryContext)
+    const { page, query, sort, setPage, setSort } = useContext(QueryContext)
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -40,6 +40,8 @@ const Shop = () => {
         }
     }
 
+    const updateSorting = (e) => { setSort(e.target.selectedOptions[0].value) }
+
     return (
         <>
             <Header setGames={setGames} />
@@ -53,6 +55,17 @@ const Shop = () => {
                     {loading && ( <div className='lds-dual-ring'></div> )}
                     
                     {!loading && (<>
+                        <div className="select">
+                            <label className='sort-label' htmlFor='sort'> Sort by:</label>
+                            <select className='result-sort' name='ordering' id='sort' onChange={updateSorting} value={sort}>
+                                <option className='sort-option' value='metacritic'>Metacritic Score</option>
+                                <option className='sort-option' value='name'>Name</option>
+                                <option className='sort-option' value='added'>Popularity</option>
+                                <option className='sort-option' value='released'>Release Date</option>
+                                <option className='sort-option' value='rating'>User Rating</option>
+                            </select>
+                        </div>
+
                         <div className='product-grid'>
                             {games.results.map((game) => {
                                 return (
