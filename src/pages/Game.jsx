@@ -89,14 +89,14 @@ const Game = () => {
 
                                     <div className='abt-cont'>
                                         <h4 className='abt-header'>ABOUT THIS GAME</h4>
-                                        <p className='abt-text'>{Parser(game.description)}</p>
+                                        <div className='abt-text'>{Parser(game.description)}</div>
                                     </div>
 
                                     <div className='abt-sysreq' style={{display: minimum == null ? 'none' : 'block'}}>
                                         <h4 className='abt-header'>SYSTEM REQUIREMENTS</h4>
                                         <div className='sysreq-text'>
-                                            <p className='sysreq'>{minimum == null ? '' : Parser(minimum)}</p>
-                                            <p className='sysreq'>{recommended == null ? '' : Parser(recommended)}</p>
+                                            <div className='sysreq'>{minimum == null ? '' : Parser(minimum)}</div>
+                                            <div className='sysreq'>{recommended == null ? '' : Parser(recommended)}</div>
                                         </div>
                                     </div>
                                 </div>
