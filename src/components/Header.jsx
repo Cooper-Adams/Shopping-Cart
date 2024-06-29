@@ -4,20 +4,15 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext, useEffect, useState } from 'react'
 import '../styles/Header.css'
 
-const Header = (props) => {
+const Header = () => {
     const { cart } = useContext(CartContext)
-    const { search, setSearch } = useContext(QueryContext)
-    const [searchTerm, setSearchTerm] = useState('')
+    const { searchBar, setSearch, setSearchBar } = useContext(QueryContext)
 
-    useEffect(() => {
-        if (search == '') { setSearchTerm('') }
-    }, [search])
-
-    const handleChange = (e) => { setSearchTerm(e.target.value) }
+    const handleChange = (e) => { setSearchBar(e.target.value) }
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        setSearch(searchTerm.split(' ').join('-').toLowerCase())
+        setSearch(searchBar.split(' ').join('-').toLowerCase())
     }
 
     return (
@@ -29,7 +24,7 @@ const Header = (props) => {
 
                 <div className='middle-nav'>
                     <form onSubmit={onSubmit}>
-                        <input className='nav-search' type='search' placeholder='Search games...' value={searchTerm} onChange={handleChange}/>
+                        <input className='nav-search' type='search' placeholder='Search games...' value={searchBar} onChange={handleChange}/>
                     </form>
                 </div>
 
