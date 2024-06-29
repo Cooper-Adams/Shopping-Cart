@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import getGames from '../functions/getGames'
 import Header from '../components/Header'
+import Parser from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
 import Scroller from '../components/Scroller'
 import '../styles/Game.css'
 
-const Game = (props) => {
+const Game = () => {
     const { cart, setCart } = useContext(CartContext)
     const [achievements, setAchievements] = useState([])
     const [game, setGame] = useState([])
@@ -17,9 +18,7 @@ const Game = (props) => {
 
     const { name } = useParams()
 
-    let date, formattedDate
-    let minimum
-    let recommended
+    let date, formattedDate, minimum, recommended
     let todaysDate = new Date()
 
     if (game.length != 0) {
@@ -48,8 +47,6 @@ const Game = (props) => {
 
         retrieveGameInfo()
     }, [])
-
-    console.log(game)
 
     if (!loading) {
         for (let i = 0; i < game.platforms.length; ++i) {
@@ -92,14 +89,14 @@ const Game = (props) => {
 
                                     <div className='abt-cont'>
                                         <h4 className='abt-header'>ABOUT THIS GAME</h4>
-                                        <p className='abt-text'>{game.description_raw}</p>
+                                        <p className='abt-text'>{Parser(game.description)}</p>
                                     </div>
 
                                     <div className='abt-sysreq' style={{display: minimum == null ? 'none' : 'block'}}>
                                         <h4 className='abt-header'>SYSTEM REQUIREMENTS</h4>
                                         <div className='sysreq-text'>
-                                            <p className='sysreq'>{minimum}</p>
-                                            <p className='sysreq'>{recommended}</p>
+                                            <p className='sysreq'>{minimum == null ? '' : Parser(minimum)}</p>
+                                            <p className='sysreq'>{recommended == null ? '' : Parser(recommended)}</p>
                                         </div>
                                     </div>
                                 </div>
