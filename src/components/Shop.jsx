@@ -14,7 +14,6 @@ const Shop = () => {
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                setLoading(true)
                 setGames(await getGames(query))
             } catch (e) {
                 console.error(e)
@@ -44,7 +43,7 @@ const Shop = () => {
 
     return (
         <>
-            <Header setGames={setGames} />
+            <Header />
 
             <div className='product-cont'>
                 <ResultBar
@@ -55,7 +54,7 @@ const Shop = () => {
                     {loading && ( <div className='lds-dual-ring'></div> )}
                     
                     {!loading && (<>
-                        <div className="select">
+                        <div className='select'>
                             <label className='sort-label' htmlFor='sort'> Sort by:</label>
                             <select className='result-sort' name='ordering' id='sort' onChange={updateSorting} value={sort}>
                                 <option className='sort-option' value='metacritic'>Metacritic Score</option>
