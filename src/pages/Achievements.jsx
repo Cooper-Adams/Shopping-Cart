@@ -43,11 +43,11 @@ const Achievements = () => {
         <>
             <Header />
 
-            {loading && ( <div className='lds-dual-ring'></div> )}
-
-            {!loading && (
-                <div className='full-achievements'>
-                    <div className="ach-top">
+            <div className='full-achievements'>
+                {loading && ( <div className='lds-dual-ring'></div> )}
+                
+                {!loading && (<>
+                    <div className='ach-top'>
                         <h2>Showing {achievements.length} Achievements</h2>
                         <Link to={'/game/' + name} className='return-link'><h2>Return</h2></Link>
                     </div>
@@ -66,8 +66,8 @@ const Achievements = () => {
                             </div>
                         )
                     })}
-                </div>
-            )}
+                </>)}
+            </div>
         </>
     )
 }
