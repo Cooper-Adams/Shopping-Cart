@@ -5,21 +5,23 @@ import '../styles/ItemCard.css'
 const ItemCard = (item) => {
     let android, apple, nintendo, pc, playstation, xbox = false
 
-    item.game.platforms.forEach((plat) => {
-        if (plat.platform.id == 4) {
-            pc = true
-        } else if (plat.platform.id == 187 || plat.platform.id == 18 || plat.platform.id == 16) {
-            playstation = true
-        } else if (plat.platform.id == 186 || plat.platform.id == 1 || plat.platform.id == 14) {
-            xbox = true
-        } else if (plat.platform.id == 7) {
-            nintendo = true
-        } else if (plat.platform.id == 3) {
-            apple = true
-        } else if (plat.platform.id == 21) {
-            android = true
-        }
-    })
+    if (item.game.platforms != null) {
+        item.game.platforms.forEach((plat) => {
+            if (plat.platform.id == 4) {
+                pc = true
+            } else if (plat.platform.id == 187 || plat.platform.id == 18 || plat.platform.id == 16) {
+                playstation = true
+            } else if (plat.platform.id == 186 || plat.platform.id == 1 || plat.platform.id == 14) {
+                xbox = true
+            } else if (plat.platform.id == 7) {
+                nintendo = true
+            } else if (plat.platform.id == 3) {
+                apple = true
+            } else if (plat.platform.id == 21) {
+                android = true
+            }
+        })
+    }
 
     return (        
         <div className='item-card'>
