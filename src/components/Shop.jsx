@@ -14,6 +14,7 @@ const Shop = () => {
     useEffect(() => {
         const fetchGames = async () => {
             try {
+                setLoading(true)
                 setGames(await getGames(query))
             } catch (e) {
                 console.error(e)
