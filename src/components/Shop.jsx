@@ -1,30 +1,14 @@
+import { GamesContext } from '../contexts/GamesContext'
 import { QueryContext } from '../contexts/QueryContext'
-import getGames from '../functions/getGames'
 import Header from './Header'
 import ItemCard from './ItemCard'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import ResultBar from './ResultBar'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { page, query, sort, setPage, setSort } = useContext(QueryContext)
-    const [games, setGames] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const fetchGames = async () => {
-            try {
-                setLoading(true)
-                setGames(await getGames(query))
-            } catch (e) {
-                console.error(e)
-            } finally {
-                setLoading(false)
-            }
-        }
-        
-        fetchGames()
-    }, [query])
+    const { games, loading } = useContext(GamesContext)
+    const { page, sort, setPage, setSort } = useContext(QueryContext)
 
     const changePage = (button) => {
         window.scrollTo(0, 0)
