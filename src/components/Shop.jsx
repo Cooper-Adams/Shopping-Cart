@@ -1,14 +1,16 @@
-import { GamesContext } from '../contexts/GamesContext'
 import { QueryContext } from '../contexts/QueryContext'
+import getGames from '../functions/getGames'
 import Header from './Header'
 import ItemCard from './ItemCard'
 import React, { useContext } from 'react'
 import ResultBar from './ResultBar'
+import { useQuery } from 'react-query'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { games, loading } = useContext(GamesContext)
-    const { page, sort, setPage, setSort } = useContext(QueryContext)
+    const { page, sort, setPage, setSort, query } = useContext(QueryContext)
+
+    const { data: games, error, isLoading, } = useQuery(['gamesData', query], () => getGames(query), { refetchOnWindowFocus: false})
 
     const changePage = (button) => {
         window.scrollTo(0, 0)
@@ -30,15 +32,13 @@ const Shop = () => {
         <>
             <Header />
 
-            <div className='product-cont'>
-                <ResultBar
-                    number = {games.count}
-                />
-                
-                <div className='pg-container'>
-                    {loading && ( <div className='lds-dual-ring'></div> )}
+            <div className='product-cont'> 
+                <ResultBar number = {games != undefined ? games.count : null}/>
                     
-                    {!loading && (<>
+                <div className='pg-container'>
+                    {isLoading && ( <div className='lds-dual-ring'></div> )}
+                    
+                    {!isLoading && (<>
                         <div className='select'>
                             <label className='sort-label' htmlFor='sort'> Sort by:</label>
                             <select className='result-sort' name='ordering' id='sort' onChange={updateSorting} value={sort}>
