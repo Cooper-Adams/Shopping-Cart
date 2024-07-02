@@ -90,7 +90,6 @@
 }
   
 .checkmark {
-    background-color: var(--darkest-color);
     border: 1px solid var(--lightest-bg);
     height: 1rem;
     left: 0;
@@ -117,7 +116,7 @@
 .check-container .checkmark:after {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
-    border: solid var(--lightest-bg);
+    border: solid var(--text-color);
     border-width: 0 2px 2px 0;
     height: .5rem;
     margin: .1rem 0 0 .3rem;
