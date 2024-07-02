@@ -3,7 +3,7 @@ import { QueryContext } from '../contexts/QueryContext'
 import React, { useContext } from 'react'
 
 const ResultBar = (props) => {
-    const { additions, platforms, queryGenre, queryTag, setAdditions, setPage, setPlatforms, setSearch, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
+    const { additions, platforms, queryGenre, queryTag, setAdditions, setPage, setPlatforms, setSearch, setSearchBar, setSort, setQueryGenre, setQueryTag } = useContext(QueryContext)
 
     const changeGenres = (e) => {
         let inputs = document.querySelectorAll('.genre')
@@ -65,6 +65,7 @@ const ResultBar = (props) => {
         setQueryGenre('')
         setQueryTag('')
         setSearch('')
+        setSearchBar('')
         setSort('added')
 
         let inputs = document.querySelectorAll('.checkall')
