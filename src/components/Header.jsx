@@ -1,7 +1,7 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
 import { QueryContext } from '../contexts/QueryContext'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import '../styles/Header.css'
 
 const Header = () => {
