@@ -1,6 +1,5 @@
 import { CCProvider } from '../contexts/CartContext'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { GCProvider } from '../contexts/GamesContext'
 import { QCProvider } from '../contexts/QueryContext'
 import Achievements from '../pages/Achievements'
 import Cart from '../pages/Cart'
@@ -37,9 +36,7 @@ const Router = () => {
   return (
     <QCProvider>
       <CCProvider>
-        <GCProvider>
-          <RouterProvider router={router} />
-        </GCProvider>
+        <RouterProvider router={router} />
       </CCProvider>
     </QCProvider>
   )
