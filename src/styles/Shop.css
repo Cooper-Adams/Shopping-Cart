@@ -81,8 +81,8 @@ select::-ms-expand {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(15%, 1fr));
     grid-column-gap: 1.25rem;
     grid-row-gap: 2rem;
 }
