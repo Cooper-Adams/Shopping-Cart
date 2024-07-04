@@ -1,25 +1,9 @@
 import { CartContext } from '../contexts/CartContext'
-import getGames from '../functions/getGames'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import '../styles/Cart.css'
 
 const CartItemCard = (props) => {
     const { cart, setCart } = useContext(CartContext)
-    const [game, setGame] = useState([])
-
-    useEffect(() => {
-        async function retrieveGameInfo() {
-            try {
-                setGame(await getGames('https://api.rawg.io/api/games/' + props.game.slug + '?key=hellorobots'))
-            } catch (err) {
-                console.log(err)
-            } finally {
-                props.setLoading(false)
-            }
-        }
-
-        retrieveGameInfo()
-    }, [])
 
     const removeGame = () => {
         var array = [...cart]
@@ -40,8 +24,8 @@ const CartItemCard = (props) => {
     return (
         <div className='cic-game'>
             <div className='cic-begin'>
-                <img className='cic-img' src={game.background_image} alt={'Background image for ' + game.name}/>
-                <h4 className='cic-name'>{game.name}</h4>
+                <img className='cic-img' src={props.game.background_image} alt={'Background image for ' + props.game.name}/>
+                <h4 className='cic-name'>{props.game.name}</h4>
             </div>
 
             <div className='cic-end'>
