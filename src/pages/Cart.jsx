@@ -1,4 +1,5 @@
 import { CartContext } from '../contexts/CartContext'
+import { LibraryContext } from '../contexts/LibraryContext'
 import CartItemCard from '../components/CartItemCard'
 import Header from '../components/Header'
 import React, { useContext, useState } from 'react'
@@ -6,7 +7,13 @@ import '../styles/Cart.css'
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext)
+    const { setLibrary } = useContext(LibraryContext)
     const [loading, setLoading] = useState(false)
+
+    const fakePurchase = () => {
+        setLibrary(cart)
+        setCart([])
+    }
 
     const removeAll = () => { setCart([]) }
 
@@ -43,8 +50,7 @@ const Cart = () => {
                                 
                                 <div className='pd-btns'>
                                     <button className='pd-rm' onClick={removeAll}>Remove all</button>
-                                    <button className='pd-btn'>Purchase for myself</button>
-                                    <button className='pd-btn'>Purchase as a gift</button>
+                                    <button className='pd-btn' onClick={fakePurchase}>Purchase</button>
                                 </div>
                             </div>
                         </div>
