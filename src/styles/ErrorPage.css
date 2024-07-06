@@ -1,0 +1,21 @@
+.error-div {
+    align-items: center;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.error-link {
+    color: var(--lightest-bg);
+    font-weight: bold;
+    font-size: larger;
+    position: relative;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.error-link:hover {
+    color: white;
+}
