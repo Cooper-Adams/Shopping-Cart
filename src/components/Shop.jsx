@@ -1,4 +1,5 @@
 import { QueryContext } from '../contexts/QueryContext'
+import ErrorPage from '../pages/ErrorPage'
 import getGames from '../functions/getGames'
 import Header from './Header'
 import ItemCard from './ItemCard'
@@ -50,22 +51,28 @@ const Shop = () => {
                             </select>
                         </div>
 
-                        <div className='product-grid'>
-                            {games.results.map((game) => {
-                                return (
-                                    <ItemCard
-                                        game = {game}
-                                        key = {game.id}
-                                    />
-                                )
-                            })}
-                        </div>
+                        {games.count != 0 && (<>
+                            <div className='product-grid'>
+                                {games.results.map((game) => {
+                                    return (
+                                        <ItemCard
+                                            game = {game}
+                                            key = {game.id}
+                                        />
+                                    )
+                                })}
+                            </div>
 
-                        <div className='pagination-div'>
-                            <button className='pagination-btn prev' onClick={changePage}>{'<'}</button>
-                            <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / 20)}</span>
-                            <button className='pagination-btn' onClick={changePage}>{'>'}</button>
-                        </div>
+                            <div className='pagination-div'>
+                                <button className='pagination-btn prev' onClick={changePage}>{'<'}</button>
+                                <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / 20)}</span>
+                                <button className='pagination-btn' onClick={changePage}>{'>'}</button>
+                            </div>
+                        </>)}
+
+                        {games.count == 0 && (<>
+                            <h3 className='no-results'>There are no results. Please search again.</h3>
+                        </>)}
                     </>)}
                 </div>
             </div>
