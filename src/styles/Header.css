@@ -76,15 +76,27 @@ input[type='search']::-webkit-search-cancel-button {
 
 .nav-link {
   color: var(--text-color);
+  display: flex;
   font-weight: bold;
   font-size: larger;
   position: relative;
+  text-align: center;
   text-decoration: none;
+  white-space: pre-wrap;
+}
+
+.nav-link.logo {
+  font-weight: 800;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .nav-link:hover {
   transform: scale(1.1);
   transition: all .25s ease;
+}
+
+.nav-link.logo:hover {
+  transform: none;
 }
 
 .cart-count {
