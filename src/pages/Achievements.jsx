@@ -1,52 +1,22 @@
 import { Link, useParams } from 'react-router-dom'
-import getGames from '../functions/getGames'
+import { useQuery } from 'react-query'
 import Header from '../components/Header'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import '../styles/Achievements.css'
 
 const Achievements = () => {
-    const [achievements, setAchievements] = useState([])
-    const [loading, setLoading] = useState(true)
-
     const { name } = useParams()
 
-    useEffect(() => {
-        async function getAchievements() {
-            try {
-                let blankAch = []
-                let tempAch = await getGames('https://api.rawg.io/api/games/' + name + '/achievements?page_size=40&key=hellorobots')
-    
-                while (true) {
-                    tempAch.results.map((ach) => {
-                        blankAch.push(ach)
-                    })
-            
-                    if (tempAch.next != null) {
-                        tempAch = await getGames(tempAch.next)
-                    } else {
-                        break
-                    }
-                }
-
-                setAchievements(blankAch)
-            } catch (err) {
-                console.log(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        getAchievements()
-    }, [])
+    const { data: achievements, error, isLoading, } = useQuery(['getAchievements', `/.netlify/functions/getAchievements?name=${name}`], async () => await(await fetch(`/.netlify/functions/getAchievements?name=` + name)).json(), { refetchOnWindowFocus: false})
 
     return (
         <>
             <Header />
 
             <div className='full-achievements'>
-                {loading && ( <div className='lds-dual-ring'></div> )}
+                {isLoading && ( <div className='lds-dual-ring'></div> )}
                 
-                {!loading && (<>
+                {!isLoading && (<>
                     <div className='ach-top'>
                         <h2>Showing {achievements.length} Achievements</h2>
                         <Link to={'/game/' + name} className='return-link'><h2>Return</h2></Link>
@@ -73,4 +43,3 @@ const Achievements = () => {
 }
 
 export default Achievements
-
