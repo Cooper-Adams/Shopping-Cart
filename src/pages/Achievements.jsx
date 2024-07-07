@@ -7,7 +7,7 @@ import '../styles/Achievements.css'
 const Achievements = () => {
     const { name } = useParams()
 
-    const { data: achievements, error, isLoading, } = useQuery(['getAchievements', `/.netlify/functions/getAchievements?name=${name}`], async () => await(await fetch(`/.netlify/functions/getAchievements?name=` + name)).json(), { refetchOnWindowFocus: false})
+    const { data: achievements, error, isLoading, } = useQuery(['getAchievements', `/netlify/functions/getAchievements?name=${name}`], async () => await(await fetch(`/.netlify/functions/getAchievements?name=` + name)).json(), { refetchOnWindowFocus: false})
 
     return (
         <>
