@@ -13,10 +13,10 @@ export const QCProvider = (props) => {
     const [searchBar, setSearchBar] = useState('')
     const [sort, setSort] = useState('added')
     
-    const [query, setQuery] = useState('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions)
+    const [query, setQuery] = useState('https://api.rawg.io/api/games?stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions + 'key=')
     
     useEffect(() => {
-        setQuery('https://api.rawg.io/api/games?key=hellorobots&stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : '') + (platforms.length != 0 ? ('&platforms=' + platforms) : '') +(search != '' ? ('&search=' + search) : ''))
+        setQuery('https://api.rawg.io/api/games?stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : '') + (platforms.length != 0 ? ('&platforms=' + platforms) : '') +(search != '' ? ('&search=' + search) : '') + 'key=')
     }, [additions, page, platforms, queryGenre, queryTag, search, sort])
 
     const ccValue = {
