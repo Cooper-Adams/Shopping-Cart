@@ -1,27 +1,27 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import getGames from '../functions/getGames'
+import { useQuery } from 'react-query'
 import Header from '../components/Header'
 import Parser from 'html-react-parser'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Scroller from '../components/Scroller'
 import '../styles/Game.css'
 
 const Game = () => {
     const { cart, setCart } = useContext(CartContext)
-    const [achievements, setAchievements] = useState([])
-    const [game, setGame] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [movies, setMovies] = useState([])
-    const [screenshots, setScreenshots] = useState([])
 
     const { name } = useParams()
 
     let date, formattedDate, minimum, recommended
     let todaysDate = new Date()
 
-    if (game.length != 0) {
+    const { data: achievements, error: achievementsError, isLoading: isAchLoading, } = useQuery(['getAchievements', name], async () => await(await fetch(`/.netlify/functions/getAchievements?name=${name}&page_size=3`)).json(), { refetchOnWindowFocus: false})
+    const { data: game, error: gameError, isLoading: isGameLoading, } = useQuery(['getGameData', name], async () => await(await fetch(`/.netlify/functions/getGameData?name=${name}`)).json(), { refetchOnWindowFocus: false})
+    const { data: movies, error: moviesError, isLoading: isMovieLoading, } = useQuery(['getGameMovies', name], async () => await(await fetch(`/.netlify/functions/getGameMovies?name=${name}`)).json(), { refetchOnWindowFocus: false})
+    const { data: screenshots, error: screenError, isLoading: isScreenLoading, } = useQuery(['getGameScreens', name], async () => await(await fetch(`/.netlify/functions/getGameScreens?name=${name}`)).json(), { refetchOnWindowFocus: false})
+
+    if (!isGameLoading) {
         if (game.released) {
             date = new Date(game.released.replace(/-/g, '\/'))
             formattedDate = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
@@ -30,25 +30,7 @@ const Game = () => {
         }
     }
 
-    //useEffect to get game information with id as well as getting movies (and more?)
-    useEffect(() => {
-        async function retrieveGameInfo() {
-            try {
-                setAchievements(await getGames('https://api.rawg.io/api/games/' + name + '/achievements?page_size=3&key=hellorobots'))
-                setGame(await getGames('https://api.rawg.io/api/games/' + name + '?key=hellorobots'))
-                setMovies(await getGames('https://api.rawg.io/api/games/' + name + '/movies?key=hellorobots'))
-                setScreenshots(await getGames('https://api.rawg.io/api/games/' + name + '/screenshots?key=hellorobots'))
-            } catch (err) {
-                console.log(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        retrieveGameInfo()
-    }, [])
-
-    if (!loading) {
+    if (!isAchLoading && !isGameLoading && !isMovieLoading && !isScreenLoading) {
         for (let i = 0; i < game.platforms.length; ++i) {
             if (game.platforms[i].platform.name === 'PC') {
                 minimum = game.platforms[i].requirements['minimum']
@@ -57,17 +39,17 @@ const Game = () => {
         }
     }
 
-    const addToCart = () => { if ((cart.findIndex((game) => game.slug === name)) == -1) { setCart([{slug: name}, ...cart]) } }
-    
+    const addToCart = () => { if ((cart.findIndex((potentialGame) => potentialGame.slug === name)) == -1) { setCart([game, ...cart]) } }
+
     return (
         <>
             <Header />
             
             <div className='game-cont'>
                 <div className='game-content'>
-                    {loading && ( <div className='lds-dual-ring'></div> )}
+                    {(isAchLoading || isGameLoading || isMovieLoading || isScreenLoading) && ( <div className='lds-dual-ring'></div> )}
 
-                    {!loading && (<>
+                    {(!isAchLoading && !isGameLoading && !isMovieLoading && !isScreenLoading) && (<>
                         <h1 className='game-name'>{game.name}</h1>
 
                         <div className='gc-inner'>
@@ -141,12 +123,12 @@ const Game = () => {
                                     </div>
                                 </div>
 
-                                <div className='gc-right-achievements' style={{display: achievements.results.length > 0 ? 'flex' : 'none'}}>
+                                <div className='gc-right-achievements' style={{display: achievements.length > 0 ? 'flex' : 'none'}}>
                                     <div className='lr-tags'>
-                                        <h3 className='tag-header'>Includes {achievements.count} Achievements:</h3>
+                                        <h3 className='tag-header'>Includes {achievements.length} Achievements:</h3>
 
                                         <div className='side-achievements'>
-                                            {achievements.results.map((ach, indx) => {
+                                            {achievements.map((ach, indx) => {
                                                 return (<img key={indx} className='side-achievement' src={ach.image}></img>)
                                             })}
                                             
