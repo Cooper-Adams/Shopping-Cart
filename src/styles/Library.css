@@ -1,7 +1,11 @@
-.library-header {
+.library-header, .library-empty {
     color: var(--text-color);
     margin-left: 4.5rem;
     padding: 0;
+}
+
+.library-empty {
+    align-self: center;
 }
 
 .library-pg-container {
