@@ -31,7 +31,7 @@ const ItemCard = (item) => {
 
             <div className='bottom-card'>
                 <div className='bc-top'>
-                    <Link to={'game/' + item.game.slug} state={{id: item.game.id}}>
+                    <Link to={'/game/' + item.game.slug} state={{id: item.game.id}}>
                         <h2 className='game-title'>{item.game.name}</h2>
                     </Link>
 
