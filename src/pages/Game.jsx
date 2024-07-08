@@ -1,4 +1,5 @@
 import { CartContext } from '../contexts/CartContext'
+import { LibraryContext } from '../contexts/LibraryContext'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
@@ -10,6 +11,7 @@ import '../styles/Game.css'
 
 const Game = () => {
     const { cart, setCart } = useContext(CartContext)
+    const { library } = useContext(LibraryContext)
 
     const { name } = useParams()
 
@@ -39,7 +41,7 @@ const Game = () => {
         }
     }
 
-    const addToCart = () => { if ((cart.findIndex((potentialGame) => potentialGame.slug === name)) == -1) { setCart([game, ...cart]) } }
+    const addToCart = () => { if ((cart.findIndex((potentialGame) => potentialGame.slug === name)) == -1) { setCart([...cart, game]) } }
 
     return (
         <>
@@ -62,11 +64,14 @@ const Game = () => {
 
                                 <div className='lower-left'>
                                     <div className='atc'>
-                                        <h3 className='atc-bm'>Buy {game.name}</h3>
-                                        <div className='atc-button-cont'>
-                                            <p className='atc-price'>$69.99</p>
-                                            <button className='atc-btn' onClick={addToCart}>Add to Cart</button>
-                                        </div>
+                                        <h3 className='atc-bm'>{(library.findIndex((potentialGame) => potentialGame.slug === name) == -1) ? 'Buy ' + game.name : 'You already own ' + game.name}</h3>
+
+                                        {(library.findIndex((potentialGame) => potentialGame.slug === name) == -1) && <>
+                                            <div className='atc-button-cont'>
+                                                <p className='atc-price'>$69.99</p>
+                                                <button className='atc-btn' onClick={addToCart}>Add to Cart</button>
+                                            </div>
+                                        </>}
                                     </div>
 
                                     <div className='abt-cont'>
