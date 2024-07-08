@@ -7,11 +7,18 @@ import '../styles/Cart.css'
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext)
-    const { setLibrary } = useContext(LibraryContext)
+    const { library, setLibrary } = useContext(LibraryContext)
     const [loading, setLoading] = useState(false)
 
     const fakePurchase = () => {
-        setLibrary(cart)
+        let tempLibrary = library
+
+        cart.forEach((game) => {
+            tempLibrary.push(game)
+        })
+
+        setLibrary(tempLibrary)
+        
         setCart([])
     }
 
