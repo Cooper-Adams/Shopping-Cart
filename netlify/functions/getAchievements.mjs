@@ -3,12 +3,12 @@ const apiKey = process.env.RAK_ETERNAL
 exports.handler = async (event, context) => {
     try {
         let blankAch = []
-        let tempAch = await (await fetch('https://api.rawg.io/api/games/' + event.queryStringParameters.name + '/achievements?page_size=40&key=' + apiKey)).json()
+        let tempAch = await (await fetch('https://api.rawg.io/api/games/' + event.queryStringParameters.name + '/achievements?' + (event.queryStringParameters.page_size == 3 ? 'page_size=3' : 'page_size=40') +'&key=' + apiKey)).json()
 
         while (true) {
             tempAch.results.map((ach) => { blankAch.push(ach) })
     
-            if (tempAch.next != null) {
+            if (tempAch.next != null && event.queryStringParameters.page_size != 3) {
                 tempAch = await (await fetch(tempAch.next)).json()
             } else {
                 break
