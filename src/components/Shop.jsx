@@ -1,6 +1,4 @@
 import { QueryContext } from '../contexts/QueryContext'
-import ErrorPage from '../pages/ErrorPage'
-import getGames from '../functions/getGames'
 import Header from './Header'
 import ItemCard from './ItemCard'
 import React, { useContext } from 'react'
@@ -11,7 +9,7 @@ import '../styles/Shop.css'
 const Shop = () => {
     const { page, sort, setPage, setSort, query } = useContext(QueryContext)
 
-    const { data: games, error, isLoading, } = useQuery(['gamesData', query], () => getGames(query), { refetchOnWindowFocus: false})
+    const { data: games, error, isLoading, } = useQuery(['getResults', query], async () => await(await fetch(`/.netlify/functions/getResults?query=${query}`)).json(), { refetchOnWindowFocus: false})
 
     const changePage = (button) => {
         window.scrollTo(0, 0)
