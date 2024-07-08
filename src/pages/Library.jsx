@@ -14,8 +14,8 @@ const Library = () => {
             <div className='library-cont'>
                 <h1 className='library-header'>My Library</h1>
 
-                <div className='pg-container'>
-                    <div className='product-grid'>
+                <div className='library-pg-container'>
+                    <div className='library-product-grid'>
                         {library.map((game) => {
                             return (
                                 <ItemCard
