@@ -15,16 +15,22 @@ const Library = () => {
                 <h1 className='library-header'>My Library</h1>
 
                 <div className='library-pg-container'>
-                    <div className='library-product-grid'>
-                        {library.map((game) => {
-                            return (
-                                <ItemCard
-                                    game = {game}
-                                    key = {game.id}
-                                />
-                            )
-                        })}
-                    </div>
+                    {library.length != 0 && <>
+                        <div className='library-product-grid'>
+                            {library.map((game) => {
+                                return (
+                                    <ItemCard
+                                        game = {game}
+                                        key = {game.id}
+                                    />
+                                )
+                            })}
+                        </div>
+                    </>}
+
+                    {library.length == 0 && <>
+                        <h3 className='library-empty'>Your library is empty. Go buy some games!</h3>
+                    </>}
                 </div>
             </div>
         </>
