@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.pg-container {
+.library-pg-container {
     -ms-overflow-style: none;
     display: flex;
     flex-direction: column;
@@ -15,11 +15,11 @@
     scrollbar-width: none;
 }
 
-.pg-container::-webkit-scrollbar {
+.library-pg-container::-webkit-scrollbar {
     display: none;
 }
 
-.product-grid {
+.library-product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fill, 1fr);
