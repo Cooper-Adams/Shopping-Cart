@@ -2,34 +2,33 @@ import React, { useEffect } from 'react'
 import '../styles/Scroller.css'
 
 const Scroller = (props) => {
-    let btnSlider
-    let cSlides
-    let scSlides
-    let slideRail
-    let smCarousel
-    let videoPlayer
+    let btnSlider, cSlides, scSlides, slideRail, smCarousel, videoPlayer
 
     let carouselContent = []
     let smallCC = []
     let slideCount = 0
 
     const changeSlide = (e) => {
+        // Changes slide index if either the back/next buttons or a small carousel image/video is clicked
         if (e.target.classList.contains('btn-prev')) {
-            if (slideCount === 0) { slideCount = scSlides.length - 1 }
+            if (slideCount == 0) { slideCount = scSlides.length - 1 }
             else { slideCount-- }
-        } else {
-            if (slideCount === (scSlides.length - 1)) { slideCount = 0 }
+        } else if (e.target.classList.contains('btn-next')) {
+            if (slideCount == (scSlides.length - 1)) { slideCount = 0 }
             else { slideCount++ }
+        } else {
+            if (e.target.classList.contains('vss')) {
+                slideCount = e.target.parentNode.id
+            } else {
+                slideCount = e.target.id
+            }
         }
 
+        //Moves the big slides based on the new index
         if (slideCount <= cSlides.length) {
-            cSlides.forEach((slide, indx) => {
-                slide.style = `transform: translateX(${100 * (indx - slideCount)}%)`
-            })
+            cSlides.forEach((slide, indx) => { slide.style = `transform: translateX(${100 * (indx - slideCount)}%)`})
         } else {
-            cSlides.forEach((slide, indx) => {
-                slide.style = `transform: translateX(${100 * (indx - cSlides.length)}%)`
-            })
+            cSlides.forEach((slide, indx) => { slide.style = `transform: translateX(${100 * (indx - cSlides.length)}%)`})
         }
 
         scSlides.forEach((slide, indx) => {
@@ -69,16 +68,16 @@ const Scroller = (props) => {
 
     carouselContent.push(props.screenshots.map((sc, indx) => {
         return (
-            <div key={indx} className='slide'>
-                <img className='slide-img' src={sc.image} alt={props.name + ' screenshot'} />
+            <div key={indx} className='slide' id={indx}>
+                <img className='slide-img' draggable={false} src={sc.image} alt={props.name + ' screenshot'} />
             </div>
         )
     }))
 
     smallCC.push(props.screenshots.map((sc, indx) => {
         return (
-            <div key={indx} className='small-slide'>
-                <img className='ss-img' src={sc.image} alt={props.name + ' screenshot'} />
+            <div key={indx} className='small-slide' onClick={changeSlide}>
+                <img className='ss-img' draggable={false} src={sc.image} alt={props.name + ' screenshot'} id={indx}/>
             </div>
         )
     }))
@@ -86,8 +85,8 @@ const Scroller = (props) => {
     if (props.movies.length != 0) {
         smallCC.push(props.movies.map((movie, indx) => {
             return (
-                <div key={indx} className='small-slide vss'>
-                   <img className='ss-img vss' src={movie.preview} alt={movie.name} id={movie.data['480']} />
+                <div key={indx} className='small-slide vss' id={smallCC[0].length + indx} onClick={changeSlide}>
+                   <img className='ss-img vss' draggable={false} src={movie.preview} alt={movie.name} id={movie.data['480']} />
                 </div>
             )
         }))
@@ -119,7 +118,7 @@ const Scroller = (props) => {
 
             if (indx == 0) { slide.firstChild.classList.add('active') }
         })
-    }, [])
+    })
 
     return (
         <>
