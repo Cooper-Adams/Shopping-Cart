@@ -66,20 +66,16 @@
 .shop-resultsbar form {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: .3rem;
 }
 
 .check-container {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+    border-bottom: 1px solid transparent;
     color: var(--lightest-bg);
     cursor: pointer;
-    font-size: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
+    font-size: large;
+    transition: all .25s ease-in-out;
     width: fit-content;
-    user-select: none;
 }
   
 .check-container input {
@@ -89,38 +85,8 @@
     position: absolute;
     width: 0;
 }
-  
-.checkmark {
-    border: 1px solid var(--lightest-bg);
-    height: 1rem;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1rem;
-}
-  
-.check-container input:checked ~ .checkmark {
-    background-color: var(--darkest-bg);
-    border: 1px solid var(--lightest-bg);
-}
-  
-.checkmark:after {
-    content: '';
-    display: none;
-    position: absolute;
-}
-  
-.check-container input:checked ~ .checkmark:after {
-    display: flex;
-}
-  
-.check-container .checkmark:after {
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    border: solid var(--text-color);
-    border-width: 0 2px 2px 0;
-    height: .5rem;
-    margin: .1rem 0 0 .3rem;
-    transform: rotate(45deg);
-    width: .25rem;
+
+.check-container:has(> input:checked) {
+    border-bottom: 1px solid var(--text-color);
+    color: var(--text-color);
 }
