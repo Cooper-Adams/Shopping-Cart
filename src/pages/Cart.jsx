@@ -51,7 +51,7 @@ const Cart = () => {
                                 <div className='pd-top'>
                                     <span>Estimated Total:</span>
 
-                                    <span>${(69.99 * cart.length)}</span>
+                                    <span>${(69.99 * cart.length).toFixed(2)}</span>
                                 </div>
 
                                 
