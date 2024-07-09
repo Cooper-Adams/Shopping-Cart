@@ -31,10 +31,12 @@
 .img-wrapper {
     background-color: black;
     display: flex;
+    height: 230px !important;
     justify-content: center;
 }
 
 .item-card img {
+    align-self: center;
     height: 230px !important;
 }
 
