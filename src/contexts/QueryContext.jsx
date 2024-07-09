@@ -16,7 +16,7 @@ export const QCProvider = (props) => {
     const [query, setQuery] = useState('https://api.rawg.io/api/games?stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions)
     
     useEffect(() => {
-        setQuery('https://api.rawg.io/api/games?stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : '') + (platforms.length != 0 ? ('&platforms=' + platforms) : '') +(search != '' ? ('&search=' + search) : ''))
+        setQuery('https://api.rawg.io/api/games?stores=1&page=' + page + '&' + pageSize + '&ordering=-' + sort + '&exclude_additions=' + additions + (queryTag != '' ? ('&tags=' + queryTag) : '') + (queryGenre != '' ? ('&genres=' + queryGenre) : '') + (platforms.length != 0 ? ('&platforms=' + platforms) : '') + (search != '' ? ('&search=' + search) : ''))
     }, [additions, page, platforms, queryGenre, queryTag, search, sort])
 
     const ccValue = {
