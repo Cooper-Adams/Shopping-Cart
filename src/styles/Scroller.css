@@ -20,10 +20,10 @@
 }
 
 .slide, .video-div {
-    align-self: center;
     max-height: 400px;
     position: absolute;
     transition: all .25s;
+    width: 100%;
 }
 
 .video-div {
@@ -32,6 +32,7 @@
 }
 
 .slide-img, .video-player {
+    align-self: center;
     max-height: 100%;
     width: 100%;
 }
@@ -39,12 +40,13 @@
 .sm-carousel {
     height: calc(415px / 4);
     overflow: hidden;
-    margin: .15rem 0;
+    padding-bottom: 1rem;
     position: relative;
     width: 100%;
 }
 
 .small-slide {
+    cursor: pointer;
     display: flex;
     height: 100%;
     position: absolute;
