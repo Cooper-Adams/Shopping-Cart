@@ -1,6 +1,6 @@
 .library-header, .library-empty {
     color: var(--text-color);
-    margin-left: 4.5rem;
+    margin-left: 5.5rem;
     padding: 0;
 }
 
@@ -14,8 +14,8 @@
     flex-direction: column;
     margin-left: 4rem;
     margin-right: 4rem;
-    max-height: calc(100vh - 4rem);
     overflow-y: scroll;
+    padding: 1rem;
     scrollbar-width: none;
 }
 
