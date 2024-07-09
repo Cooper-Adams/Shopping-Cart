@@ -7,7 +7,7 @@
     flex-direction: column;
     margin: 0 auto;
     min-height: 100vh;
-    width: 60%;
+    width: 70%;
 }
 
 .gc-inner {
@@ -125,6 +125,7 @@
 }
 
 .sysreq {
+    margin-top: .5rem;
     white-space: pre-line;
     width: 50%;
 }
