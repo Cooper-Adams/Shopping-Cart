@@ -11,16 +11,21 @@
 .item-card:hover, .item-card:focus-visible {
     box-shadow: 0 0 5px 2px black;
     outline: 0;
+    transform: scale(1.05);
+    transition: all .25s ease;
 }
 
 .item-card a {
     color: var(--text-color);
+    display: inline-block;
     text-decoration: none;
+    width: fit-content;
 }
 
 .game-title {
     margin: .75rem 0 0;
     padding: 0;
+    width: fit-content;
 }
 
 .img-wrapper {
