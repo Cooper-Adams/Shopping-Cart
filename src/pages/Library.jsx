@@ -20,7 +20,13 @@ const Library = () => {
                             {library.map((game) => {
                                 return (
                                     <ItemCard
-                                        game = {game}
+                                        id = {game.id}
+                                        image = {game.background_image}
+                                        name = {game.name}
+                                        platforms = {game.platforms}
+                                        rating = {game.rating}
+                                        rating_top = {game.rating_top}
+                                        slug = {game.slug}
                                         key = {game.id}
                                     />
                                 )
