@@ -68,8 +68,7 @@ select::-ms-expand {
     display: flex;
     flex-direction: column;
     margin-left: auto;
-    margin-right: auto;
-    max-height: calc(100vh - 4rem);
+    margin-right: 1.5rem;
     overflow-y: scroll;
     scrollbar-width: none;
     width: 80%;
@@ -81,7 +80,7 @@ select::-ms-expand {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fit, minmax(15%, 1fr));
     grid-column-gap: 1rem;
     grid-row-gap: 2rem;
