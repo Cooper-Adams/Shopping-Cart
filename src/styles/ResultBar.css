@@ -8,6 +8,7 @@
     height: calc(100vh - 6rem);
     overflow-y: auto;
     padding: 1rem 1.5rem;
+    position: fixed;
     scrollbar-width: none;
     width: 15%;
 }
