@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import '../styles/ItemCard.css'
 
-const ItemCard = (item) => {
+const ItemCard = (game) => {
     let android, apple, nintendo, pc, playstation, xbox = false
 
-    if (item.game.platforms != null) {
-        item.game.platforms.forEach((plat) => {
+    if (game.platforms != null) {
+        game.platforms.forEach((plat) => {
             if (plat.platform.id == 4) {
                 pc = true
             } else if (plat.platform.id == 187 || plat.platform.id == 18 || plat.platform.id == 16) {
@@ -26,13 +26,13 @@ const ItemCard = (item) => {
     return (        
         <div className='item-card'>
             <div className='img-wrapper'>
-                <img src={item.game.background_image} alt={item.game.name} />
+                <img src={game.image} alt={game.name} loading='lazy'/>
             </div>
 
             <div className='bottom-card'>
                 <div className='bc-top'>
-                    <Link to={'/game/' + item.game.slug} state={{id: item.game.id}}>
-                        <h2 className='game-title'>{item.game.name}</h2>
+                    <Link to={'/game/' + game.slug} state={{id: game.id}}>
+                        <h2 className='game-title'>{game.name}</h2>
                     </Link>
 
                     <div className='icon-div'>
@@ -61,7 +61,7 @@ const ItemCard = (item) => {
                         </svg>
                     </div>
 
-                    <h4 style={{display: item.game.rating_top === 0 ? 'none' : 'block'}} className={'game-rating ' + (item.game.rating / item.game.rating_top > .7 ? 'good' : item.game.rating / item.game.rating_top > .4 ? 'average' : item.game.rating > 0 ? 'bad' : '')}>{item.game.rating} / {item.game.rating_top}</h4>
+                    <h4 style={{display: game.rating_top === 0 ? 'none' : 'block'}} className={'game-rating ' + (game.rating / game.rating_top > .7 ? 'good' : game.rating / game.rating_top > .4 ? 'average' : game.rating > 0 ? 'bad' : '')}>{game.rating} / {game.rating_top}</h4>
                 </div>
             </div>
         </div>
