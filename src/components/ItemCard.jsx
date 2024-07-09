@@ -25,9 +25,11 @@ const ItemCard = (game) => {
 
     return (        
         <div className='item-card'>
-            <div className='img-wrapper'>
-                <img src={game.image} alt={game.name} loading='lazy'/>
-            </div>
+            <Link to={'/game/' + game.slug} state={{id: game.id}}>
+                <div className='img-wrapper'>
+                    <img src={game.image} alt={game.name} loading='lazy'/>
+                </div>
+            </Link>
 
             <div className='bottom-card'>
                 <div className='bc-top'>
