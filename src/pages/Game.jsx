@@ -15,6 +15,8 @@ const Game = () => {
 
     const { name } = useParams()
 
+    window.scrollTo(0, 0)
+
     let date, formattedDate, minimum, recommended
     let todaysDate = new Date()
 
@@ -130,7 +132,7 @@ const Game = () => {
 
                                 <div className='gc-right-achievements' style={{display: achievements.length > 0 ? 'flex' : 'none'}}>
                                     <div className='lr-tags'>
-                                        <h3 className='tag-header'>Includes {game.achievements_count} Achievements:</h3>
+                                        <h3 className='tag-header'>Includes {game.parent_achievements_count} Achievements:</h3>
 
                                         <div className='side-achievements'>
                                             {achievements.map((ach, indx) => {
