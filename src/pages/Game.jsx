@@ -130,7 +130,7 @@ const Game = () => {
 
                                 <div className='gc-right-achievements' style={{display: achievements.length > 0 ? 'flex' : 'none'}}>
                                     <div className='lr-tags'>
-                                        <h3 className='tag-header'>Includes {achievements.length} Achievements:</h3>
+                                        <h3 className='tag-header'>Includes {game.achievements_count} Achievements:</h3>
 
                                         <div className='side-achievements'>
                                             {achievements.map((ach, indx) => {
