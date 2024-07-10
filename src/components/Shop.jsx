@@ -11,9 +11,9 @@ const Shop = () => {
 
     const { data: games, error, isLoading, } = useQuery(['getResults', query], async () => await(await fetch(`/.netlify/functions/getResults?query=${query}`)).json(), { refetchOnWindowFocus: false})
 
-    window.scrollTo(0, 0)
-
     const changePage = (button) => {
+        window.scrollTo(0, 0)
+
         if (button.target.classList.contains('prev')) {
             if (page != 1) {
                 setPage(page - 1)
