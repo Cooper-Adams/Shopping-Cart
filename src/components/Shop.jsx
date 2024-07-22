@@ -7,7 +7,7 @@ import { useQuery } from 'react-query'
 import '../styles/Shop.css'
 
 const Shop = () => {
-    const { page, sort, setPage, setSort, query } = useContext(QueryContext)
+    const { page, pageSize, sort, setPage, setPageSize, setSort, query } = useContext(QueryContext)
 
     const { data: games, error, isLoading, } = useQuery(['getResults', query], async () => await(await fetch(`/.netlify/functions/getResults?query=${query}`)).json(), { refetchOnWindowFocus: false})
 
@@ -25,6 +25,8 @@ const Shop = () => {
         }
     }
 
+    const updatePageSize = (e) => { setPageSize(e.target.selectedOptions[0].value)}
+
     const updateSorting = (e) => { setSort(e.target.selectedOptions[0].value) }
 
     return (
@@ -38,15 +40,28 @@ const Shop = () => {
                     {isLoading && ( <div className='lds-dual-ring'></div> )}
                     
                     {!isLoading && (<>
-                        <div className='select'>
-                            <label className='sort-label' htmlFor='sort'> Sort by:</label>
-                            <select className='result-sort' name='ordering' id='sort' onChange={updateSorting} value={sort}>
-                                <option className='sort-option' value='metacritic'>Metacritic Score</option>
-                                <option className='sort-option' value='name'>Name</option>
-                                <option className='sort-option' value='added'>Popularity</option>
-                                <option className='sort-option' value='released'>Release Date</option>
-                                <option className='sort-option' value='rating'>User Rating</option>
-                            </select>
+                        <div className='select-cont'>
+                            <div className='select'>
+                                <label className='sort-label' htmlFor='sort'>Sort by:</label>
+                                <select className='result-sort' name='ordering' id='sort' onChange={updateSorting} value={sort}>
+                                    <option className='sort-option' value='metacritic'>Metacritic Score</option>
+                                    <option className='sort-option' value='name'>Name</option>
+                                    <option className='sort-option' value='added'>Popularity</option>
+                                    <option className='sort-option' value='released'>Release Date</option>
+                                    <option className='sort-option' value='rating'>User Rating</option>
+                                </select>
+                            </div>
+
+                            <div className='select'>
+                                <label className='sort-label' htmlFor='page-size'>Items per page:</label>
+                                <select className='result-sort' name='ordering' id='page-size' onChange={updatePageSize} value={pageSize}>
+                                    <option className='sort-option' value='page_size=10'>10</option>
+                                    <option className='sort-option' value='page_size=15'>15</option>
+                                    <option className='sort-option' value='page_size=20'>20</option>
+                                    <option className='sort-option' value='page_size=25'>25</option>
+                                    <option className='sort-option' value='page_size=30'>30</option>
+                                </select>
+                            </div>
                         </div>
 
                         {games.count != 0 && (<>
@@ -69,7 +84,7 @@ const Shop = () => {
 
                             <div className='pagination-div'>
                                 <button className='pagination-btn prev' onClick={changePage}>{'<'}</button>
-                                <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / 20)}</span>
+                                <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / pageSize.slice(-2))}</span>
                                 <button className='pagination-btn' onClick={changePage}>{'>'}</button>
                             </div>
                         </>)}
