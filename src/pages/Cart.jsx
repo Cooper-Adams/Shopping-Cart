@@ -40,6 +40,7 @@ const Cart = () => {
                                 cart.map((game) => {
                                     return (
                                         <CartItemCard 
+                                            key = {game.id}
                                             game = {game}
                                             setLoading = {setLoading}
                                         />
