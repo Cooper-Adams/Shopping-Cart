@@ -75,11 +75,19 @@ const ResultBar = (props) => {
 
     const toggleAdditions = (e) => { setAdditions(e.target.checked) }
 
-    return (
+    return (<>
+        <input type='checkbox' id='menuCheck'/>
+        <label htmlFor='menuCheck'>
+            <div id='btn'>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </label>
+
         <div className='shop-resultsbar'>
             <div className='srb-top'>
-                <h3 className='srb-top-number'>{(props.number == null ? 'Loading results...' : props.number + ' results')}</h3>
-                <h3 className='clear-btn' onClick={clearQuery}>Clear</h3>
+                <h3 className='clear-btn' onClick={clearQuery}>Clear Filters</h3>
             </div>
 
             <label className='check-container exclude' htmlFor='exclude'>Exclude Add-Ons
@@ -268,7 +276,7 @@ const ResultBar = (props) => {
                 </label>
             </form>
         </div>
-    )
+    </>)
 }
 
 export default ResultBar
