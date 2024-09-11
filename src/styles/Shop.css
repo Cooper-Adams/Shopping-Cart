@@ -8,6 +8,11 @@
     margin-left: .5rem;
 }
 
+.games-count {
+    color: var(--text-color);
+    margin: 1rem 1rem 0;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -71,7 +76,7 @@ select::-ms-expand {
     -ms-overflow-style: none;
     display: flex;
     flex-direction: column;
-    margin-left: 20rem;
+    margin-left: 2rem;
     min-height: 100vh;
     overflow-y: scroll;
     scrollbar-width: none;
