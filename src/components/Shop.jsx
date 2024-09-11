@@ -11,6 +11,8 @@ const Shop = () => {
 
     const { data: games, error, isLoading, } = useQuery(['getResults', query], async () => await(await fetch(`/.netlify/functions/getResults?query=${query}`)).json(), { refetchOnWindowFocus: false})
 
+    console.log(error)
+
     const changePage = (button) => {
         window.scrollTo(0, 0)
 
@@ -34,12 +36,14 @@ const Shop = () => {
             <Header />
 
             <div className='product-cont'> 
-                <ResultBar number = {games != undefined ? games.count : null}/>
+                <ResultBar/>
                     
                 <div className='pg-container'>
                     {isLoading && ( <div className='lds-dual-ring'></div> )}
                     
                     {!isLoading && (<>
+                        <h2 className='games-count'>{games != undefined ? games.count : null} Results</h2>
+
                         <div className='select-cont'>
                             <div className='select'>
                                 <label className='sort-label' htmlFor='sort'>Sort by:</label>
