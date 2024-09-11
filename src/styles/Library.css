@@ -1,7 +1,13 @@
+.library-cont {
+    display: flex;
+    flex-direction: column;
+}
+
 .library-header, .library-empty {
     color: var(--text-color);
     margin-left: 5.5rem;
     padding: 0;
+    text-align: center;
 }
 
 .library-empty {
@@ -30,4 +36,11 @@
     grid-column-gap: 1.25rem;
     grid-row-gap: 2rem;
     padding: .5rem;
+}
+
+@media only screen and (max-width: 992px) {
+    .library-header, .library-empty {
+        align-self: center;
+        margin-left: 0;
+    }
 }
