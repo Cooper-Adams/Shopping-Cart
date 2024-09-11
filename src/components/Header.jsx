@@ -1,12 +1,13 @@
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
 import { QueryContext } from '../contexts/QueryContext'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../styles/Header.css'
 
 const Header = () => {
     const { cart } = useContext(CartContext)
     const { searchBar, setPage, setSearch, setSearchBar } = useContext(QueryContext)
+    const [desktop, setDesktop] = useState(window.innerWidth > 1450)
 
     const handleChange = (e) => { setSearchBar(e.target.value) }
 
@@ -16,11 +17,19 @@ const Header = () => {
         setSearch(searchBar.split(' ').join('-').toLowerCase())
     }
 
+    const updateMedia = () => { setDesktop(window.innerWidth > 1450) }
+
+    useEffect(() => {
+        window.addEventListener('resize', updateMedia)
+        return () => window.removeEventListener('resize', updateMedia)
+    })
+
     return (
         <>
             <nav className='cart-nav'>
                 <div className='left-nav'>
-                    <Link className='nav-link logo' to='/'>Video{'\n'}Gamazon</Link>
+                    {desktop && <Link className='nav-link logo' to='/'>Video{'\n'}Gamazon</Link>}
+                    {!desktop && <Link className='nav-link logo' to='/'>VG</Link>}
                 </div>
 
                 <div className='middle-nav'>
