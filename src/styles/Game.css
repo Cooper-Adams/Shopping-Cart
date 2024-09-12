@@ -269,3 +269,17 @@
     color: var(--lightest-bg);
     text-decoration: none;
 }
+
+@media only screen and (max-width: 1440px) {
+    .game-content {
+        width: 95%;
+    }
+
+    .gc-inner {
+        flex-direction: column;
+    }
+
+    .gc-left, .gc-right {
+        width: 100%;
+    }
+}
