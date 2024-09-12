@@ -74,13 +74,20 @@
 }
 
 .pd-rm {
+    backface-visibility: hidden;
     background: none;
     border: none;
     color: var(--text-color);
     cursor: pointer;
     font-size: medium;
     padding: 0;
+    transition: .2s all ease-in-out;
     width: fit-content;
+}
+
+.pd-rm:hover {
+    border-bottom: 1px solid var(--text-color);
+    transform: scale(1.1);
 }
 
 .pd-btn {
@@ -91,4 +98,38 @@
     cursor: pointer;
     font-size: medium;
     padding: 5px;
+}
+
+.pd-btn:hover {
+    color: white;
+}
+
+@media only screen and (max-width: 1440px) {
+    .ic-cont {
+        width: 95%;
+    }
+
+    .cic-begin {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .cic-img {
+        width: 100%;
+    }
+
+    .cic-name {
+        padding: 0;
+    }
+
+    .cic-game {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .cic-end {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+    }
 }
