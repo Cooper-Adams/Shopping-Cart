@@ -11,16 +11,19 @@
 }
 
 .carousel {
+    align-items: center;
     background-color: black;
     display: flex;
-    min-height: 470px;
+    height: 450px;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
 
 .slide, .video-div {
+    align-items: center;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     max-height: 400px;
     position: absolute;
@@ -34,8 +37,8 @@
 }
 
 .slide-img, .video-player {
-    align-self: center;
-    max-height: 100%;
+    aspect-ratio: 1.7 / 1;
+    object-fit: cover;
     width: 100%;
 }
 
