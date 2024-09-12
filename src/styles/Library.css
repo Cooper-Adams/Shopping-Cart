@@ -38,9 +38,19 @@
     padding: .5rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1440px) {
     .library-header, .library-empty {
         align-self: center;
         margin-left: 0;
+    }
+
+    .library-pg-container {
+        margin: 0;
+    }
+
+    .library-product-grid {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem;
     }
 }
