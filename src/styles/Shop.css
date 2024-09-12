@@ -129,10 +129,6 @@ select::-ms-expand {
 }
 
 @media only screen and (max-width: 1440px) {
-    .pg-container {
-        margin-left: 15rem;
-    }
-
     .product-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -148,10 +144,6 @@ select::-ms-expand {
 }
 
 @media only screen and (max-width: 992px) {
-    .pg-container {
-        margin-left: 15rem;
-    }
-
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -164,7 +156,7 @@ select::-ms-expand {
 
 @media only screen and (max-width: 768px) {
     .pg-container {
-        margin: 0 4rem;
+        margin: 0 .25rem 0 2.25rem;
     }
 
     .product-grid {
@@ -180,11 +172,5 @@ select::-ms-expand {
     .select {
         margin: .5rem 0 .5rem 1rem;
         width: calc(100% - 2rem);
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .pg-container {
-        margin: 0 2.5rem;
     }
 }
