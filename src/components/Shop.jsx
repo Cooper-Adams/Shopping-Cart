@@ -42,7 +42,7 @@ const Shop = () => {
                     {isLoading && ( <div className='lds-dual-ring'></div> )}
                     
                     {!isLoading && (<>
-                        <h2 className='games-count'>{games != undefined ? games.count : null} Results</h2>
+                        <h2 className='games-count'>{games != undefined ? games.count : null} results</h2>
 
                         <div className='select-cont'>
                             <div className='select'>
