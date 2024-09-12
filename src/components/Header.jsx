@@ -7,7 +7,7 @@ import '../styles/Header.css'
 const Header = () => {
     const { cart } = useContext(CartContext)
     const { searchBar, setPage, setSearch, setSearchBar } = useContext(QueryContext)
-    const [desktop, setDesktop] = useState(window.innerWidth > 1450)
+    const [desktop, setDesktop] = useState(window.innerWidth > 1440)
 
     const handleChange = (e) => { setSearchBar(e.target.value) }
 
@@ -17,7 +17,7 @@ const Header = () => {
         setSearch(searchBar.split(' ').join('-').toLowerCase())
     }
 
-    const updateMedia = () => { setDesktop(window.innerWidth > 1450) }
+    const updateMedia = () => { setDesktop(window.innerWidth > 1440) }
 
     useEffect(() => {
         window.addEventListener('resize', updateMedia)
@@ -53,7 +53,8 @@ const Header = () => {
 
             <Link to='https://rawg.io' target='_blank' rel='noopener noreferrer'>
                 <div className='rawg'>
-                    <h5 className='rawg-title'>POWERED BY R A W G</h5>
+                    {desktop && <h5 className='rawg-title'>POWERED BY R A W G</h5>}
+                    {!desktop && <h5 className='rawg-title'>R A W G</h5>}
                 </div>
             </Link>
         </>
