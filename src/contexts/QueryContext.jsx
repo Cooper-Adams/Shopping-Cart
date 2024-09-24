@@ -5,7 +5,7 @@ export const QueryContext = createContext([])
 export const QCProvider = (props) => {
     const [additions, setAdditions] = useState(false)
     const [page, setPage] = useState(1)
-    const [pageSize, setPageSize] = useState('page_size=20')
+    const [pageSize, setPageSize] = useState('page_size=12')
     const [platforms, setPlatforms] = useState('')
     const [queryGenre, setQueryGenre] = useState('')
     const [queryTag, setQueryTag] = useState('')
