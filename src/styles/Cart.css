@@ -105,6 +105,10 @@
 }
 
 @media only screen and (max-width: 1440px) {
+    .cart-title {
+        align-self: center;
+    }
+
     .ic-cont {
         width: 95%;
     }
