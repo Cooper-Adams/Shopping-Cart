@@ -34,7 +34,7 @@ const Cart = () => {
                 <>
                     <div className='cart-cont'>
                         <div className='ic-cont'>
-                            <h1 className='cart-title'>YOUR SHOPPING CART</h1>
+                            <h1 className='cart-title'>Your Shopping Cart</h1>
 
                             {cart.length != 0 && (
                                 cart.map((game) => {
