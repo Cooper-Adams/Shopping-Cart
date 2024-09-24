@@ -11,8 +11,6 @@ const Shop = () => {
 
     const { data: games, error, isLoading, } = useQuery(['getResults', query], async () => await(await fetch(`/.netlify/functions/getResults?query=${query}`)).json(), { refetchOnWindowFocus: false})
 
-    console.log(error)
-
     const changePage = (button) => {
         window.scrollTo(0, 0)
 
@@ -59,11 +57,11 @@ const Shop = () => {
                             <div className='select'>
                                 <label className='sort-label' htmlFor='page-size'>Items per page:</label>
                                 <select className='result-sort' name='ordering' id='page-size' onChange={updatePageSize} value={pageSize}>
-                                    <option className='sort-option' value='page_size=10'>10</option>
-                                    <option className='sort-option' value='page_size=15'>15</option>
+                                    <option className='sort-option' value='page_size=4'>4</option>
+                                    <option className='sort-option' value='page_size=8'>8</option>
+                                    <option className='sort-option' value='page_size=12'>12</option>
+                                    <option className='sort-option' value='page_size=16'>16</option>
                                     <option className='sort-option' value='page_size=20'>20</option>
-                                    <option className='sort-option' value='page_size=25'>25</option>
-                                    <option className='sort-option' value='page_size=30'>30</option>
                                 </select>
                             </div>
                         </div>
@@ -88,7 +86,7 @@ const Shop = () => {
 
                             <div className='pagination-div'>
                                 <button className='pagination-btn prev' onClick={changePage}>{'<'}</button>
-                                <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / pageSize.slice(-2))}</span>
+                                <span className='pagination-numeration'>{'Page ' + page + ' of ' + Math.ceil(games.count / pageSize.replace('page_size=', ''))}</span>
                                 <button className='pagination-btn' onClick={changePage}>{'>'}</button>
                             </div>
                         </>)}
